@@ -21,13 +21,18 @@
     <p class="designation">Usuario</p>
     <mat-divider></mat-divider>
 
+    <button mat-button class="menu-button" routerLink="/">
+      <mat-icon>home</mat-icon>
+      <span>Inicio</span>
+    </button>
+
     <button mat-button class="menu-button" [matMenuTriggerFor]="homeMenu">
       <mat-icon>face</mat-icon>
       <span>Estudiantes</span>
     </button>
 
     <mat-menu #homeMenu="matMenu">
-      <button mat-menu-item routerLink="/home">Agregar estudiantes</button>
+      <button mat-menu-item routerLink="/create-student">Agregar estudiantes</button>
       <button mat-menu-item routerLink="/home">Modificar estudiantes</button>
       <button mat-menu-item routerLink="/home">Ver estudiantes</button>
     </mat-menu>
@@ -58,6 +63,6 @@
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <div class="content mat-elevation-z4">Main content</div>
+    <div class="content mat-elevation-z4"><router-outlet></router-outlet></div>
   </mat-sidenav-content>
 </mat-sidenav-container>

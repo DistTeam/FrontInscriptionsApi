@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
+import {FormStudentComponent} from "../Students/form-create-student/form-student.component";
 
 
 const routes: Routes = [
-  { path: 'src', component: },
-  { path: 'students', component: StudentListComponent },
-  { path: 'students/:id', component: StudentDetailComponent }
+  { path: 'create-student', component: FormStudentComponent}
 ];
 @NgModule({
   declarations: [],
