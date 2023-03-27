@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+      <div class="card-body">
+    <div class="bg-body p-1 mx-5">
+    <form class = "bg-outline-warning ">
+        <div class="form-group col-5 p-3">
+          <label for="nombreInput">Nombres</label>
+          <input type="nombre" class="form-control" id="nombreInput2" placeholder="Nombres Estudiante" required data-error="Por favor, ingrese el nombre">
+        </div>
+        <div class="form-group p-3 col-5 p-3">
+          <label for="cuposInput">Apellidos</label>
+          <input type="cupos" class="form-control" id="cuposInput" placeholder="Apellidos Estudiante" required data-error="Por favor, ingrese los apellidos">
+        </div>
+        <div class="form-group col-5 p-3">
+            <label for="nombreInput">Tipo Documento</label>
+            <div class="container">
+                <select class="form-select" required >
+
+                  <option value="opcion1"  required>Cédula de Ciudadania</option>
+                  <option value="opcion3"  required>Pasaporte</option>
+                  <option value="opcion3"  required>Tarjeta de Identidad</option>
+                </select>
+              </div>
+          </div>
+        <div class="form-group col-5 p-3">
+            <label for="nombreInput">Numero Documento</label>
+            <input type="nombre" class="form-control" id="nombreInput" placeholder="Numero de documento del estudiante" required data-error="Por favor, ingrese el numero de documento">
+          </div>
+        <div class="form-group p-3" >
+            <label for="estadoInput">Estado</label>
+        </div>
+        <div class="btn-group form-group p-3" data-toggle="buttons">
+
+            <label class="btn btn-outline-dark">
+              <input type="radio" name="options" id="option3" autocomplete="off"  required> Matriculado
+            </label>
+            <label class="btn btn-outline-dark">
+                <input type="radio" name="options" id="option4" autocomplete="off"  required> No Matriculado
+              </label>
+              <label class="btn btn-outline-dark">
+                <input type="radio" name="options" id="option5" autocomplete="off"  required> Semestre Aplazado
+              </label>
+              <label class="btn btn-outline-dark">
+                <input type="radio" name="options" id="option6" autocomplete="off"  required> Graduado
+              </label>
+          </div>
+          <div class="form-group col-5 p-3">
+            <label for="nombreInput">Género</label>
+        </div>
+            <div class="btn-group form-group p-3" data-toggle="buttons">
+
+                <label class="btn btn-outline-dark">
+                  <input type="radio" name="options" id="option7" autocomplete="off"  required> Masculino
+                </label>
+                <label class="btn btn-outline-dark">
+                    <input type="radio" name="options" id="option8" autocomplete="off"  required> Femenino
+                  </label>
+                  <label class="btn btn-outline-dark">
+                    <input type="radio" name="options" id="option9" autocomplete="off"  required> Otros
+                  </label>
+              </div>
+          <div>
+            <button type="submit" style="float: right;" ali class="btn btn-primary mx-3">Crear Estudiante</button>
+          </div>
+      </form>
+    </div>
+</div>
+</body>
+</html>
