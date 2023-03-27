@@ -14,10 +14,11 @@ import {HttpClientModule} from "@angular/common/http";
 import {NgxPaginationModule} from "ngx-pagination";
 import {FormsModule} from "@angular/forms";
 import {FormStudentComponent} from "../Students/form-create-student/form-student.component";
+import { SubjectComponent } from './subject/subject.component';
 
 
 @NgModule({
-  declarations: [AppComponent, FormStudentComponent],
+  declarations: [AppComponent, FormStudentComponent, SubjectComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
