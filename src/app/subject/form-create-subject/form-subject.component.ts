@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import {Observable} from "rxjs";
-import {SericeSubjectsService} from "./../serivce-subjects.service";
+import {SericeSubjectsService} from "src/app/serivce-subjects.service";
+
+
 @Component({
   selector: 'app-form-subject',
   templateUrl: './form-subject.component.html',
@@ -50,4 +52,4 @@ export class FormSubjectComponent {
 
 
 
- 
+
