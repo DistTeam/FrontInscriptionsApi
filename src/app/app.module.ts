@@ -15,10 +15,11 @@ import {NgxPaginationModule} from "ngx-pagination";
 import {FormsModule} from "@angular/forms";
 import {FormStudentComponent} from "./Students/form-create-student/form-student.component";
 import {FormEditStudentComponent} from "./Students/form-edit-student/form-edit-student.component";
+import {StudentComponent} from "./Students/student.component";
 
 
 @NgModule({
-  declarations: [AppComponent, FormStudentComponent,FormEditStudentComponent],
+  declarations: [AppComponent, FormStudentComponent,FormEditStudentComponent,StudentComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
