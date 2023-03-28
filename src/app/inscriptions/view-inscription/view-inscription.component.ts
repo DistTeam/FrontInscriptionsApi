@@ -19,14 +19,14 @@ export class ViewInscriptionComponent {
   }
 
   ngOnInit(): void {
-    this.inspectionList$ = this.service.getInspectionList();
+    this.inspectionList$ = this.service.getInspectionListInscriptions();
     this.inspectionList$.subscribe((inspectionList) => {
       this.inspectionList = inspectionList;
     });
   }
 
   getInspectionList() {
-    this.inspectionList$ = this.service.getInspectionList();
+    this.inspectionList$ = this.service.getInspectionListInscriptions();
     this.inspectionList$.subscribe((inspectionList) => {
       this.inspectionList = inspectionList;
     });

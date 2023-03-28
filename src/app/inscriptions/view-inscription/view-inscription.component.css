@@ -3,3 +3,7 @@
     margin-right: 0.5rem;
   }
 }
+body {
+  font-size: 2px; /* Establece el tamaño de letra a 14px */
+}
+
