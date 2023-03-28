@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'angular-responsive-sidebar'`, () => {
+  it(`should have as title 'angular-responsive-inscriptions-api'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('SideBar');
+    expect(app.title).toEqual('Inscripciones UPTC');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('angular-responsive-sidebar app is running!');
+    expect(compiled.querySelector('.content span').textContent).toContain('angular-responsive-inscriptions-api app is running!');
   });
 });

@@ -13,12 +13,14 @@ import {AppRoutingModule} from "./app-routing.module";
 import {HttpClientModule} from "@angular/common/http";
 import {NgxPaginationModule} from "ngx-pagination";
 import {FormsModule} from "@angular/forms";
-import {FormStudentComponent} from "../Students/form-create-student/form-student.component";
-import { SubjectComponent } from './subject/subject.component';
-import {FormSubjectComponent} from "./subject/form-create-subject/form-subject.component";
+import {StudentComponent} from "./Students/student.component";
+import {FormSubjectComponent} from './subject/form-create-subject/form-subject.component';
+import {FormEditSubjectComponent} from "./subject/form-edit-subject/form-edit-subject.component";
+import {FormEditStudentComponent} from "./Students/form-edit-student/form-edit-student.component";
+import {SubjectComponent} from "./subject/subject.component";
 
 @NgModule({
-  declarations: [AppComponent, FormStudentComponent, SubjectComponent, FormSubjectComponent],
+  declarations: [AppComponent,SubjectComponent, StudentComponent,FormEditStudentComponent, FormSubjectComponent,FormEditSubjectComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

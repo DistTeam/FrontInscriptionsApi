@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-form-edit-student',
-  templateUrl: './form-edit-student.component.html',
-  styleUrls: ['./form-edit-student.component.css']
+  selector: 'student',
+  templateUrl: './student.component.html',
+  styleUrls: ['./student.component.css']
 })
 export class StudentComponent{
-
 }

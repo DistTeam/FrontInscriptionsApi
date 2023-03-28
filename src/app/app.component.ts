@@ -12,7 +12,7 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy'
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = "SideBar";
+  title = "Incripciones UPTC";
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
 
