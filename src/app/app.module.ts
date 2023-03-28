@@ -23,8 +23,7 @@ import { CreateInscriptionsComponent } from './inscriptions/form-create-inscript
 import { ViewInscriptionComponent } from './inscriptions/view-inscription/view-inscription.component';
 import {ShowInspectionComponent} from "./subject/show-inspection/show-inspection.component";
 import {FormStudentComponent} from "./Students/form-create-student/form-student.component";
-import {FormEditInscriptionsComponent} from "./inscriptions/form-edit-inscriptions/form-edit-inscriptions.component";
-
+import {FormEditInscriptionsComponent} from "./inscriptions/form-edit-inscriptions/form-edit-inscriptions.component"
 
 
 @NgModule({
