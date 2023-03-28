@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {Observable} from "rxjs";
 import {SericeSubjectsService} from "../../serivce-subjects.service";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-form-edit-inscriptions',
@@ -12,6 +12,8 @@ export class FormEditInscriptionsComponent {
   inspectionList: any[]=[];
 
   constructor(private service:SericeSubjectsService) {
+
+
   }
   ngOnInit(): void {
     this.inspectionList$ = this.service.getInspectionList();
