@@ -19,9 +19,10 @@ import {FormEditSubjectComponent} from "./subject/form-edit-subject/form-edit-su
 import {FormEditStudentComponent} from "./Students/form-edit-student/form-edit-student.component";
 import {SubjectComponent} from "./subject/subject.component";
 import { InscriptionsComponent } from './inscriptions/inscriptions.component';
+import { CreateInscriptionsComponent } from './inscriptions/form-create-inscriptions/create-inscriptions.component';
 
 @NgModule({
-  declarations: [AppComponent,SubjectComponent, StudentComponent,FormEditStudentComponent, FormSubjectComponent,FormEditSubjectComponent, InscriptionsComponent],
+  declarations: [AppComponent,SubjectComponent, StudentComponent,FormEditStudentComponent, FormSubjectComponent,FormEditSubjectComponent, InscriptionsComponent, CreateInscriptionsComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
