@@ -1,0 +1,34 @@
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+<title>Document</title>
+</head>
+<body>
+
+
+<div class="card-body">
+  <div class="bg-body  p-1 mx-5">
+    <form class = "bg-outline-primary ">
+      <div class="form-group col-5 p-3">
+        <label for="codeInput">Código del Estudiante</label>
+        <input type="code" class="form-control" id="codeInput" placeholder="Nombre materia" required data-error="Por favor, ingrese el codigo">
+      </div>
+      <div class="form-group p-3 col-5">
+        <label for="codeInput">Nombre Materia</label>
+        <div class="container">
+          <select class="form-select" required >
+            <option *ngFor="let item of inspectionList" [value]="item.subjectName">{{ item.subjectName }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="submit" class="btn btn-primary mx-3" style="float: right;">Modificar Inscripción</button>
+      </div>
+
+    </form>
+  </div>
+</div>
+</body>
+</html>
