@@ -1,9 +1,22 @@
+.custom-buttonIns {
+  font-size: 1.5rem;
+  background: deepskyblue;
+  color: white;
+}
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.totalRegisters{
+  font-size: 1rem;
+}
 @media (max-width: 100px) {
   .form-check-label {
     margin-right: 0.5rem;
   }
 }
-body {
-  font-size: 2px; /* Establece el tamaño de letra a 14px */
-}
+
+
 
