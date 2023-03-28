@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+</head>
+<body>
+  <div>
+    <p>hola <strong> {{nombre}}</strong></p>
+    <input type="button" name="cambiar nombre" value="Cambiar nombre" (click)="cambiarNombre()" />
+    <div class="table-responsive">
+      <hr />
+      <table class="table table-striped table-bordered table-hover table-primary ">
+        <thead class="table table-success header-table" >
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Tipo de documento</th>
+            <th scope="col">Documento del identidad</th>
+            <th scope="col">Estado del estudiante</th>
+            <th scope="col">Genero</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of array">
+            <td>{{item.studentId}}</td>
+            <td>{{item.studentName}}</td>
+            <td>{{item.studentLn}}</td>
+            <td>{{item.typeDocStudent}}</td>
+            <td>{{item.studentDoc}}</td>
+            <td>
+              <p *ngIf="item.studentStatus === 0">
+                Matriculado
+              </p>
+              <p *ngIf="item.studentStatus === 1">
+                No matriculado
+              </p>
+              <p *ngIf="item.studentStatus === 2">
+                Semestre aplazado
+              </p>
+              <p *ngIf="item.studentStatus === 3">
+                Graduado
+              </p>
+              <ng-template #inactive>
+                Inactivo
+              </ng-template>
+            </td>
+            <td>{{item.studentGenre}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="pagination">
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
+

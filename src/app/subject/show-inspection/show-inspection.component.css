@@ -12,3 +12,8 @@
 .totalRegisters{
   font-size: 1rem;
 }
+
+#title{
+  background-color: lightblue;
+  text-align: center;
+}

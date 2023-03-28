@@ -24,6 +24,7 @@ import { ViewInscriptionComponent } from './inscriptions/view-inscription/view-i
 import {ShowInspectionComponent} from "./subject/show-inspection/show-inspection.component";
 import {FormStudentComponent} from "./Students/form-create-student/form-student.component";
 import {FormEditInscriptionsComponent} from "./inscriptions/form-edit-inscriptions/form-edit-inscriptions.component"
+import {StudentsComponent} from "./Students/students/students.component";
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import {FormEditInscriptionsComponent} from "./inscriptions/form-edit-inscriptio
     FormEditInscriptionsComponent,
     ViewInscriptionComponent,
     ShowInspectionComponent,
-    FormStudentComponent
+    FormStudentComponent,
+    StudentsComponent
   ],
   imports: [
     BrowserModule,

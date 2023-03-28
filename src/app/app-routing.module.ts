@@ -9,6 +9,7 @@ import {ShowInspectionComponent} from "./subject/show-inspection/show-inspection
 import {CreateInscriptionsComponent} from "./inscriptions/form-create-inscriptions/create-inscriptions.component";
 import {FormEditInscriptionsComponent} from "./inscriptions/form-edit-inscriptions/form-edit-inscriptions.component";
 import {ViewInscriptionComponent} from "./inscriptions/view-inscription/view-inscription.component";
+import {StudentsComponent} from "./Students/students/students.component";
 
 const routes: Routes = [
   { path: 'create-student', component: FormStudentComponent},
@@ -18,7 +19,8 @@ const routes: Routes = [
   {path:'view-subject',component: ShowInspectionComponent},
   {path:'create-inscription',component:CreateInscriptionsComponent},
   {path:'edit-inscription',component: FormEditInscriptionsComponent},
-  {path:'view-inscription',component: ViewInscriptionComponent}
+  {path:'view-inscription',component: ViewInscriptionComponent},
+  {path:'view-student', component: StudentsComponent}
 ];
 @NgModule({
   declarations: [],

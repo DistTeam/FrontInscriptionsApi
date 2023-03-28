@@ -8,7 +8,11 @@
 </head>
 
 <body>
-    
+<div id="title" class="card bg-outline-primary mx-5">
+  <div class="card-header  bg-outline-primary">
+    <h2 style="font-size: 2rem; margin-left: 1.9%"> Modificar Estudiante</h2>
+  </div>
+</div>
       <div class="card-body">
     <div class="bg-body  p-1 mx-5">
     <form class = "bg-outline-warning ">
@@ -24,7 +28,7 @@
             <label for="nombreInput">Tipo Documento</label>
             <div class="container">
                 <select class="form-select" required >
-                
+
                   <option value="opcion1"  required>Cédula de Ciudadania</option>
                   <option value="opcion3"  required>Pasaporte</option>
                   <option value="opcion3"  required>Tarjeta de Identidad</option>
@@ -39,7 +43,7 @@
             <label for="estadoInput">Estado</label>
         </div>
         <div class="btn-group form-group p-3" data-toggle="buttons">
-            
+
             <label class="btn btn-outline-dark">
               <input type="radio" name="options" id="option2" autocomplete="off"  required> Matriculado
             </label>
@@ -57,7 +61,7 @@
             <label for="nombreInput">Género</label>
         </div>
             <div class="btn-group form-group p-3" data-toggle="buttons">
-            
+
                 <label class="btn btn-outline-dark">
                   <input type="radio" name="options" id="option2" autocomplete="off"  required> Masculino
                 </label>
@@ -66,8 +70,8 @@
                   </label>
                   <label class="btn btn-outline-dark">
                     <input type="radio" name="options" id="option2" autocomplete="off"  required> Otros
-                  </label> 
-              </div>              
+                  </label>
+              </div>
           <div>
             <button type="submit" style="float: right;"ali class="btn btn-primary">Editar Estudiante</button>
           </div>
