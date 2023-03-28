@@ -7,7 +7,6 @@
     <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
     <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
   </button>
-  <p class="title">Responsive side navigation</p>
 </mat-toolbar>
 
 <mat-sidenav-container>
@@ -33,7 +32,7 @@
 
     <mat-menu #homeMenu="matMenu">
       <button mat-menu-item routerLink="/create-student">Agregar estudiantes</button>
-      <button mat-menu-item routerLink="/home">Modificar estudiantes</button>
+      <button mat-menu-item routerLink="/edit-student">Modificar estudiantes</button>
       <button mat-menu-item routerLink="/home">Ver estudiantes</button>
     </mat-menu>
 
