@@ -1,35 +1,29 @@
-<div class="container_responsive" res>
-  <table class="table table-striped table-bordered table-hover table table-primary table-responsive" >
+<div class="container responsive" res>
+  <table class="table table-striped table-bordered table-hover table-primary table-responsive" >
     <thead class="table table-success">
     <tr>
-      <th>Codigo</th>
-      <th class="text-left">
+      <th style="font-size: 16px;">Identificador</th>
+      <th class="text-left" style="font-size: 16px;">
         <div class="d-flex justify-content-between">
           <span>Nombre Estudiante</span>
           <button type="button" class="btn btn-sm ml-auto" title="Ordenar en orden alfabetico, asendente y decendentemente" (click)="sortByName()">Ordenar</button>
         </div>
       </th>
-      <th>Nombre Materia</th>
-      <th>Fecha Inscripcion</th>
-      <!--<th>Estado<select class="form-select" required name="selectedState" [(ngModel)]="activoSeleccionado"  >
-        <option value="">Todos</option>
-        <option value="1">Activos</option>
-        <option value="0">Inactivos</option>
-      </select>
-      </th>->-->
+      <th style="font-size: 16px;">Nombre Materia</th>
+      <th style="font-size: 16px;">Fecha Inscripcion</th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let item of inspectionList  | paginate: { itemsPerPage: 10, currentPage: page }  ">
+    <tr></tr>
+    <tr *ngFor="let item of inspectionList ">
+      <td style="font-size: 16px;">{{item.incriptionId}}</td>
+      <td style="font-size: 16px;">{{item.studentName}}</td>
+      <td style="font-size: 16px;">{{item.subjectName}}</td>
+      <td style="font-size: 16px;">{{item.incriptionDate}}</td>
     </tr>
-    <p class="totalRegisters">Registros totales: {{inspectionList.length}}</p>
+    <h5> total registros {{inspectionList.length}}</h5>
     </tbody>
   </table>
-  <button class="custom-button" (click)="exportTableToExcel()">
-    <mat-icon>save_alt</mat-icon>
-    <span>Exportar a excel</span>
-  </button>
-  <pagination-controls (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
 </div>
 
 
