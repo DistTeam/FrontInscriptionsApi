@@ -2,8 +2,8 @@
   <table class="table table-striped table-bordered table-hover table table-primary " >
     <thead class="table table-success">
     <tr>
-      <th>Codigo</th>
-      <th class="text-left">
+      <th style="font-size: 16px;">Codigo</th>
+      <th class="text-left" style="font-size: 16px;">
         <div class="d-flex justify-content-between">
           <span>Nombre</span>
           <!--
@@ -11,24 +11,24 @@
         -->
         </div>
       </th>
-      <th>Capacidad</th>
-      <th>Estado<select class="form-select" required name="selectedState"[(ngModel)]="activoSeleccionado">
+      <th style="font-size: 16px;">Capacidad</th>
+      <th style="font-size: 16px;">Estado<select class="form-select" required name="selectedState"[(ngModel)]="activoSeleccionado">
         <option value="">Todos</option>
         <option value="1">Activos</option>
         <option value="0">Inactivos</option>
       </select>
       </th>
-      <th>Editar</th>
+      <th style="font-size: 16px;">Editar</th>
 
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let item of inspectionList ">
 
-      <td>{{item.subjectId}}</td>
-      <td>{{item.subjectName}}</td>
-      <td>{{item.subjectCapacity}}</td>
-      <td>
+      <td style="font-size: 16px;">{{item.subjectId}}</td>
+      <td style="font-size: 16px;">{{item.subjectName}}</td>
+      <td style="font-size: 16px;">{{item.subjectCapacity}}</td>
+      <td style="font-size: 16px;">
         <span *ngIf="item.subjectStatus === 1; else inactive">
           Activo
         </span>
