@@ -18,10 +18,15 @@ import {FormSubjectComponent} from './subject/form-create-subject/form-subject.c
 import {FormEditSubjectComponent} from "./subject/form-edit-subject/form-edit-subject.component";
 import {FormEditStudentComponent} from "./Students/form-edit-student/form-edit-student.component";
 import {SubjectComponent} from "./subject/subject.component";
-import {ShowInspectionComponent} from "./subject/show-inspection/show-inspection.component";
+import { InscriptionsComponent } from './inscriptions/inscriptions.component';
+import { CreateInscriptionsComponent } from './inscriptions/form-create-inscriptions/create-inscriptions.component';
+import { FormEditInscriptionsComponent } from './Inscriptions/form-edit-inscriptions/form-edit-inscriptions.component';
+import { ViewInscriptionComponent } from './inscriptions/view-inscription/view-inscription.component';
+
+
 
 @NgModule({
-  declarations: [AppComponent,SubjectComponent, StudentComponent,FormEditStudentComponent, FormSubjectComponent,FormEditSubjectComponent,ShowInspectionComponent],
+  declarations: [AppComponent,SubjectComponent, StudentComponent,FormEditStudentComponent, FormSubjectComponent,FormEditSubjectComponent, InscriptionsComponent, CreateInscriptionsComponent, FormEditInscriptionsComponent, ViewInscriptionComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
