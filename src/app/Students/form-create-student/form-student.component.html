@@ -1,6 +1,11 @@
 <form novalidate autocomplete="off" #form="ngForm" (submit)="addStudent(form)">
   <input type="hidden" name="jeje" [value]="service.formDataStudent.studentId"/>
   <body>
+  <div id="title" class="card bg-outline-primary mx-5">
+    <div class="card-header  bg-outline-primary">
+      <h2 style="font-size: 2rem; margin-left: 1.9%"> Agregar Estudiante</h2>
+    </div>
+  </div>
 
   <div class="card-body">
     <div class="bg-body p-1 mx-5">
@@ -43,22 +48,22 @@
       </div>
       <div class="btn-group form-group p-3" data-toggle="buttons"
            [class.invalid]="studentStatus.invalid && studentStatus.touched">
-        <label class="btn btn-outline-dark">
+        <label class="btn btn-outline-primary">
           <input name="studentStatus" #studentStatus="ngModel" [(ngModel)]="service.formDataStudent.studentStatus"
                  value=0
                  type="radio" name="options" id="statusInput" autocomplete="off" value=0 required> Matriculado
         </label>
-        <label class="btn btn-outline-dark">
+        <label class="btn btn-outline-primary">
           <input name="studentStatus" #studentStatus="ngModel" [(ngModel)]="service.formDataStudent.studentStatus"
                  value=1
                  type="radio" id="statusInput" autocomplete="off" value=1 required> No Matriculado
         </label>
-        <label class="btn btn-outline-dark">
+        <label class="btn btn-outline-primary">
           <input name="studentStatus" #studentStatus="ngModel" [(ngModel)]="service.formDataStudent.studentStatus"
                  value=2
                  type="radio" id="statusInput" autocomplete="off" value=2 required> Semestre Aplazado
         </label>
-        <label class="btn btn-outline-dark">
+        <label class="btn btn-outline-primary">
           <input name="studentStatus" #studentStatus="ngModel" [(ngModel)]="service.formDataStudent.studentStatus"
                  value=3
                  type="radio" id="statusInput" autocomplete="off" value=3 required> Graduado
@@ -69,17 +74,17 @@
       </div>
       <div class="btn-group form-group p-3" data-toggle="buttons"
            [class.invalid]="studentGenre.invalid && studentGenre.touched">
-        <label class="btn btn-outline-dark">
+        <label class="btn btn-outline-primary">
           <input type="radio" #studentGenre="ngModel" name="genreInput"
                  [(ngModel)]="service.formDataStudent.studentGenre" value="M" required>
           Masculino
         </label>
-        <label class="btn btn-outline-dark">
+        <label class="btn btn-outline-primary">
           <input type="radio" #studentGenre="ngModel" name="genreInput"
                  [(ngModel)]="service.formDataStudent.studentGenre" value="F" required>
           Femenino
         </label>
-        <label class="btn btn-outline-dark">
+        <label class="btn btn-outline-primary">
           <input type="radio" #studentGenre="ngModel" name="genreInput"
                  [(ngModel)]="service.formDataStudent.studentGenre" value="O" required>
           Otro
