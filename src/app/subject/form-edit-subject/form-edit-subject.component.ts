@@ -25,7 +25,6 @@ export class FormEditSubjectComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.subjectId = params['id'];
       this.getSubject(this.subjectId);
-
     });
   }
 

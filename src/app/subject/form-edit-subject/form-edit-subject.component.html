@@ -1,6 +1,6 @@
 <form novalidate autocomplete="off" #form="ngForm" (submit)="editSubject(form)">
   <body>
-  <input type="" name="subjectId" [value]="subjectId"/>
+  <input type="hidden" name="subjectId" [value]="subjectId"/>
   <div id="title" class="card bg-outline-primary mx-5">
     <div class="card-header  bg-outline-primary">
       <h2 style="font-size: 2rem; margin-left: 1.9%"> Agregar Materia</h2>
@@ -43,7 +43,7 @@
         </button>
       </div>
       <div>
-        <button class="mat-button" [disabled]="form.invalid" type="submit" value="submit" style="float: right;" ali
+        <button class="mat-button" [disabled]="form.invalid" [routerLink]="['/view-subject']"  type="submit" value="submit" style="float: right;" ali
                 class="btn btn-primary mx-3">Crear Materia
         </button>
       </div>
