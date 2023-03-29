@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {Observable} from "rxjs";
-import {SericeSubjectsService} from "src/app/serivce-subjects.service";
+import {AppService} from "src/app/service-app.service";
 
 
 @Component({
@@ -16,7 +16,7 @@ export class FormSubjectComponent {
   sortAsc: boolean = true;
   selectedState = 1;
   activoSeleccionado: string ='1';
-  constructor( private service:SericeSubjectsService) {
+  constructor( private service:AppService) {
   }
 
   ngOnInit(): void {

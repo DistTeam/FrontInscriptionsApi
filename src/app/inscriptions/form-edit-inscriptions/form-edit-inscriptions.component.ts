@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {SericeSubjectsService} from "../../serivce-subjects.service";
+import {AppService} from "../../service-app.service";
 import {Observable} from "rxjs";
 
 @Component({
@@ -11,7 +11,7 @@ export class FormEditInscriptionsComponent {
   inspectionList$!:Observable<any[]>;
   inspectionList: any[]=[];
 
-  constructor(private service:SericeSubjectsService) {
+  constructor(private service:AppService) {
 
 
   }
