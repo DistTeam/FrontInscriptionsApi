@@ -16,23 +16,16 @@ export class ViewInscriptionComponent {
     const table = document.getElementById('myTable'); // Replace 'myTable' with the ID of your table
     const workbook = XLSX.utils.table_to_book(table);
     const fileName = 'myTable.xlsx'; // Replace 'myTable' with the name you want to give the file
-    const buffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
-    const blob = new Blob([buffer], { type: 'application/octet-stream' });
+    const buffer = XLSX.write(workbook, {bookType: 'xlsx', type: 'array'});
+    const blob = new Blob([buffer], {type: 'application/octet-stream'});
     this.fileSaverService.save(blob, fileName);
   }
-  public page: number=1;
-  inspectionList$!:Observable<any[]>;
-  inspectionList: any[]=[];
-  sortColumn: string = 'name';
-  sortAsc: boolean = true;
-  selectedState = 1;
-  activoSeleccionado: string ='1';
   public array: any[] = [];
   pageSize: number = 10;
   backPage: number = 0;
   currentPage: number = 1;
   netxPage: number = 2;
-  currentSortOrder: string = "asc";
+    currentSortOrder: string = "asc";
   curreentSortBy: string = "desc";
   currentNameFilter: string = "";
   tamanio: number = 0;
@@ -44,55 +37,83 @@ export class ViewInscriptionComponent {
   clickedName : boolean = true;
   changeIconName() {
     if(this.clickedName==true){
-      this.iconLn = 'keyboard_arrow_down'
+      this.iconSub = 'keyboard_arrow_down'
       this.iconName = 'keyboard_arrow_up'
+      this.iconDate = 'keyboard_arrow_down'
       this.iconId = 'keyboard_arrow_down'
       this.clickedName = false
     }else {
       this.clickedName = true
       this.iconName = 'keyboard_arrow_down'
+      this.iconDate = 'keyboard_arrow_down'
       this.iconId = 'keyboard_arrow_down'
-      this.iconLn = 'keyboard_arrow_down'
+      this.iconSub = 'keyboard_arrow_down'
     }
   }
-  myFunctionLn(studentLn:string):void{
+  myFunctionSub(studentLn:string):void{
     this.sortBy(studentLn);
     this.changeIconLn();
   }
-  iconLn = 'keyboard_arrow_down';
-  clickedLn : boolean = true;
+  iconSub = 'keyboard_arrow_down';
+  clickedSub : boolean = true;
   changeIconLn() {
-    if(this.clickedLn==true){
-      this.iconLn = 'keyboard_arrow_up'
+    if(this.clickedSub==true){
+      this.iconSub = 'keyboard_arrow_up'
       this.iconName = 'keyboard_arrow_down'
       this.iconId = 'keyboard_arrow_down'
-      this.clickedLn = false
+      this.iconDate = 'keyboard_arrow_down'
+      this.clickedSub = false
     }else {
-      this.clickedLn = true
-      this.iconLn = 'keyboard_arrow_down'
+      this.clickedSub = true
+      this.iconSub = 'keyboard_arrow_down'
+      this.iconDate = 'keyboard_arrow_down'
       this.iconName = 'keyboard_arrow_down'
       this.iconId = 'keyboard_arrow_down'
-      this.iconLn = 'keyboard_arrow_down'
+      this.iconSub = 'keyboard_arrow_down'
     }
   }
   myFunctionId(studentId:string):void{
     this.sortBy(studentId);
     this.changeIconId();
   }
+  iconDate = 'keyboard_arrow_down';
+  clickedDate : boolean = true;
+  myFunctionDate(dateInscription: string) {
+this.sortBy(dateInscription)
+    this.changeIconDate();
+  }
+  changeIconDate() {
+    if(this.clickedId==true){
+      this.iconSub = 'keyboard_arrow_down'
+      this.iconName = 'keyboard_arrow_down'
+      this.iconId = 'keyboard_arrow_down'
+      this.iconDate = 'keyboard_arrow_up'
+      this.clickedId = false
+    }else {
+      this.clickedId = true
+      this.iconDate = 'keyboard_arrow_down'
+      this.iconId = 'keyboard_arrow_down'
+      this.iconName = 'keyboard_arrow_down'
+      this.iconId = 'keyboard_arrow_down'
+      this.iconSub = 'keyboard_arrow_down'
+    }
+  }
   iconId = 'keyboard_arrow_down';
   clickedId : boolean = true;
   changeIconId() {
     if(this.clickedId==true){
-      this.iconLn = 'keyboard_arrow_down'
+      this.iconSub = 'keyboard_arrow_down'
       this.iconName = 'keyboard_arrow_down'
       this.iconId = 'keyboard_arrow_up'
+      this.iconDate = 'keyboard_arrow_down'
       this.clickedId = false
     }else {
       this.clickedId = true
       this.iconId = 'keyboard_arrow_down'
       this.iconName = 'keyboard_arrow_down'
       this.iconId = 'keyboard_arrow_down'
-      this.iconLn = 'keyboard_arrow_down'
+      this.iconSub = 'keyboard_arrow_down'
+      this.iconDate = 'keyboard_arrow_down'
     }
   }
   populateForm(selectedRecord: StudentModel) {
@@ -171,15 +192,10 @@ export class ViewInscriptionComponent {
     console.log("entro"  + " " + pageSize  + " " + sortOrder  + " " + sortBy + searchString)
     this.serviceIncriptions.getInscriptions(pageNumber, pageSize, sortOrder, sortBy, searchString).subscribe(response => {
       this.array = response.body;
-      const tamstudents = response.headers.get("tamanio");
-      this.tamanio = tamstudents;
-      console.log("entro2222"+" " +pageNumber + " " + pageSize  + " " + sortOrder  + " " + sortBy + searchString)
-      console.log('El valor de tamstudents es: ' + tamstudents);
+      const tamInscriptions = response.headers.get("tamanio-inscriptions");
+      this.tamanio = tamInscriptions;
+      console.log('El valor de tamInscriptions es: ' + tamInscriptions);
     });
-  }
-
-  sortByName() {
-
   }
 }
 

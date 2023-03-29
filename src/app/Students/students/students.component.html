@@ -1,11 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8" />
-  <link rel="stylesheet" type="text/css" href="./students.component.css">
-  <title></title>
-</head>
+<div id="title" class="card bg-outline-primary" style="background: lightblue">
+  <div class="card-header  bg-outline-primary">
+    <h2 style="font-size: 2rem; margin-left: 0%"> Estudiantes Existentes</h2>
+  </div>
+</div>
 <body>
+<br>
 <div>
   <div class="input-group col-md-4">
     <input class="form-control py-2" type="search" value="" placeholder="Buscar Nombre:" id="example-search-input" #myInput>
@@ -18,7 +17,7 @@
   <br />
   <div class="table-responsive">
     <hr />
-    <table class="table table-striped table-bordered table-hover table-primary ">
+    <table class="table table-striped table-bordered table-hover table-primary">
       <thead class="table table-success header-table" >
       <tr>
         <th class="text-left">
@@ -46,11 +45,11 @@
             </button>
           </div>
         </th>
-        <th scope="col" class="thead-pers">Tipo de documento</th>
-        <th scope="col" class="thead-pers">Documento del identidad</th>
-        <th scope="col" class="thead-pers">Estado del estudiante</th>
-        <th scope="col" class="thead-pers">Genero</th>
-        <th scope="col" class="thead-pers">Editar</th>
+        <th scope="col" class="col-md text-center" style="vertical-align: middle">Tipo de documento</th>
+        <th scope="col" class="col-md text-center" style="vertical-align: middle">Documento del identidad</th>
+        <th scope="col" class="col-md text-center" style="vertical-align: middle">Estado del estudiante</th>
+        <th scope="col" class="col-md text-center" style="vertical-align: middle">Genero</th>
+        <th scope="col" class="col-md text-center" style="vertical-align: middle">Editar</th>
       </tr>
       </thead>
       <tbody>
@@ -88,8 +87,8 @@
             Otro
           </p>
         </td>
-        <td>
-          <button  (click)="populateForm(item)" [routerLink]="['/edit-student/', item.studentId]" type="submit" class="btn btn-primary mx-3" style="float: right;">Editar</button>
+        <td class="col-md text-center">
+          <button  (click)="populateForm(item)" [routerLink]="['/edit-student/', item.studentId]" type="submit" class="btn btn-primary">Editar</button>
         </td>
       </tr>
       </tbody>
@@ -108,6 +107,5 @@
 </div>
 <script src="https://kit.fontawesome.com/3ec369e78b.js" crossorigin="anonymous"></script>
 </body>
-</html>
 
 
