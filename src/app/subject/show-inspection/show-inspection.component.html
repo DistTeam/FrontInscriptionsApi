@@ -37,7 +37,15 @@
     <td>{{item.subjectId}}</td>
     <td>{{item.subjectName}}</td>
     <td>{{item.subjectCapacity}}</td>
-    <td>{{item.subjectStatus}}</td>
+
+    <td>
+      <p *ngIf="item.subjectStatus == 0">
+        Inactiva
+      </p>
+      <p *ngIf="item.subjectStatus == 1">
+        Activa
+      </p>
+    </td>
     <td>
       <button  (click)="populateForm(item)" [routerLink]="['/edit-subject', item.subjectId]" type="submit" class="btn btn-primary mx-3" style="float: right;">Editar</button>
     </td>
