@@ -24,6 +24,7 @@ const routes: Routes = [
   {path:'view-student', component: StudentsComponent},
   {path: 'home-component', component: HomeComponent},
   { path: 'edit-subject/:id', component: FormEditSubjectComponent }
+
 ];
 @NgModule({
   declarations: [],

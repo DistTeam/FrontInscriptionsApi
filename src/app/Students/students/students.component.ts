@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, Inject, Injectable, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { StudentsService } from './students.service';
+import {HttpClient} from '@angular/common/http';
+import {Component, Inject, Injectable, OnInit} from '@angular/core';
+import {StudentsService} from './students.service';
+import {AppService} from "../../service-app.service";
+import {StudentModel} from "../student.model";
 
 @Component({
   selector: 'app-students',
@@ -25,6 +26,9 @@ export class StudentsComponent implements OnInit {
     this.nombre = "Ivan Martinez";
   }
 
+  populateForm(selectedRecord: StudentModel) {
+    this.service.formDataStudent = Object.assign({}, selectedRecord);
+  }
 
   public getNextPage() {
     if (this.currentPage < this.getMaxPage()) {
@@ -56,8 +60,7 @@ export class StudentsComponent implements OnInit {
         this.currentPage = this.currentPage + 1;
         this.actualiceButtons();
       }
-    }
-    else {
+    } else {
       if (this.backPage > 0) {
         this.getStudents(this.backPage, this.pageSize, this.currentSortOrder, this.curreentSortBy, this.currentNameFilter);
         this.currentPage = this.currentPage - 1;
@@ -66,10 +69,10 @@ export class StudentsComponent implements OnInit {
     }
   }
 
-  public sortBy(sortBy:string) {
+  public sortBy(sortBy: string) {
     if (this.currentSortOrder == "1") {
       this.currentSortOrder = "0";
-    } else if (this.currentSortOrder == "0"){
+    } else if (this.currentSortOrder == "0") {
       this.currentSortOrder = "1";
     }
     this.curreentSortBy = sortBy;
@@ -87,11 +90,12 @@ export class StudentsComponent implements OnInit {
   }
 
   private getMaxPage(): number {
-    return (this.tamanio/this.pageSize);
+    return (this.tamanio / this.pageSize);
   }
 
 
-  constructor(private studentsService: StudentsService) { }
+  constructor(private studentsService: StudentsService, public service:AppService) {
+  }
 
   ngOnInit(): void {
     this.getStudents(1, 10, "0", "", "");
@@ -99,7 +103,9 @@ export class StudentsComponent implements OnInit {
 
   getStudents(pageNumber: number, pageSize: number, sortOrder: string, sortBy: string, searchString: string): void {
     this.studentsService.getStudents(pageNumber, pageSize, sortOrder, sortBy, searchString).subscribe(response => {
+      // @ts-ignore
       this.array = response.body;
+      // @ts-ignore
       const tamstudents = response.headers.get("tamanio");
       this.tamanio = tamstudents;
       console.log('El valor de tamstudents es: ' + tamstudents);

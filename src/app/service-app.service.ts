@@ -22,7 +22,7 @@ export class AppService {
     return this.http.put(`${this.APIUrl}/subjects/${this.formDataSubject.subjectId}`,this.formDataSubject);
   }
   putStudent(){
-    return this.http.put(`${this.APIUrl}/students${this.formDataStudent.studentId}`,this.formDataStudent);
+    return this.http.put(`${this.APIUrl}/students/${this.formDataStudent.studentId}`,this.formDataStudent);
   }
   postStudent(){
     return this.http.post(this.APIUrl+'/students',this.formDataStudent);
@@ -35,6 +35,9 @@ export class AppService {
   }
   getSubjectById(subjectId: number): Observable<SubjectModel> {
     return this.http.get<SubjectModel>(`${this.APIUrl}/subjects/${subjectId}`);
+  }
+  getStudentId(studentId: number): Observable<StudentModel> {
+    return this.http.get<StudentModel>(`${this.APIUrl}/students/${studentId}`);
   }
   postInscription(){
     return this.http.post(this.APIUrl+'/inscription',this.formDataInscription);

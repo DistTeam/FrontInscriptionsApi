@@ -8,7 +8,7 @@
 <body>
 <div>
   <div class="input-group col-md-4">
-    <input class="form-control py-2" type="search" value="" placeholder="buscar" id="example-search-input" #myInput>
+    <input class="form-control py-2" type="search" value="" placeholder="Buscar Nombre:" id="example-search-input" #myInput>
     <span class="input-group-append">
         <button class="btn btn-outline-secondary" type="button" (click)="filterByName(myInput.value)">
           <i>Buscar</i>
@@ -44,6 +44,7 @@
         <th scope="col">Documento del identidad</th>
         <th scope="col">Estado del estudiante</th>
         <th scope="col">Genero</th>
+        <th scope="col" style="font-size: 20px;">Editar</th>
       </tr>
       </thead>
       <tbody>
@@ -81,6 +82,9 @@
             Otro
           </p>
         </td>
+        <td>
+          <button  (click)="populateForm(item)" [routerLink]="['/edit-student/', item.studentId]" type="submit" class="btn btn-primary mx-3" style="float: right;">Editar</button>
+        </td>
       </tr>
       </tbody>
     </table>
@@ -92,7 +96,7 @@
         <li class="page-item"><input class="page-link" type="button" value={{netxPage}} (click)="getPageButtons(0)" /></li>
         <li class="page-item"><input class="page-link" type="button" value="Siguiente" (click)="getNextPage()" /></li>
       </ul>
-      <p><strong> {{tamanio}}</strong></p>
+      <p>Registros Totales:<strong> {{tamanio}}</strong></p>
     </nav>
   </div>
 </div>
