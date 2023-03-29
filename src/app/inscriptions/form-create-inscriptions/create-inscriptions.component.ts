@@ -8,8 +8,13 @@ import { Component } from '@angular/core';
 export class CreateInscriptionsComponent {
   fechaActual: string;
 
+
   constructor() {
     const fecha = new Date();
     this.fechaActual = fecha.toLocaleDateString();
+
+  }
+  submitForm() {
+    // Aquí se puede procesar el envío del formulario
   }
 }

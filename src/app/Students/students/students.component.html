@@ -6,7 +6,6 @@
 </head>
 <body>
   <div>
-    <p>hola <strong> {{nombre}}</strong></p>
     <input type="button" name="cambiar nombre" value="Cambiar nombre" (click)="cambiarNombre()" />
     <div class="table-responsive">
       <hr />
@@ -46,8 +45,24 @@
                 Inactivo
               </ng-template>
             </td>
-            <td>{{item.studentGenre}}</td>
+
+            <td>
+              <p *ngIf="item.studentGenre === 'F'">
+                Femenino
+              </p>
+              <p *ngIf="item.studentGenre === 'M'">
+                Masculino
+              </p>
+              <p *ngIf="item.studentGenre === 'O'">
+                Otro
+              </p>
+              <ng-template #inactive>
+                Inactivo
+              </ng-template>
+            </td>
           </tr>
+
+
         </tbody>
       </table>
       <div class="pagination">

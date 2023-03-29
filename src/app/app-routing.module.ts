@@ -10,6 +10,7 @@ import {CreateInscriptionsComponent} from "./inscriptions/form-create-inscriptio
 import {FormEditInscriptionsComponent} from "./inscriptions/form-edit-inscriptions/form-edit-inscriptions.component";
 import {ViewInscriptionComponent} from "./inscriptions/view-inscription/view-inscription.component";
 import {StudentsComponent} from "./Students/students/students.component";
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   { path: 'create-student', component: FormStudentComponent},
@@ -20,7 +21,8 @@ const routes: Routes = [
   {path:'create-inscription',component:CreateInscriptionsComponent},
   {path:'edit-inscription',component: FormEditInscriptionsComponent},
   {path:'view-inscription',component: ViewInscriptionComponent},
-  {path:'view-student', component: StudentsComponent}
+  {path:'view-student', component: StudentsComponent},
+  {path: 'home-component', component: HomeComponent}
 ];
 @NgModule({
   declarations: [],
