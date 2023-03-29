@@ -7,7 +7,7 @@
 <br>
 <div>
   <div class="input-group col-md-4">
-    <input class="form-control py-2" type="search" value="" placeholder="Buscar Nombre:" id="example-search-input" #myInput>
+    <input autocomplete="off" class="form-control py-2" type="search" value="" placeholder="Buscar Nombre:" id="example-search-input" #myInput>
     <span class="input-group-append">
         <button class="btn btn-outline-secondary" type="button" (click)="filterByName(myInput.value)">
           <i>Buscar</i>
