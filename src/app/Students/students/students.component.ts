@@ -1,8 +1,9 @@
 import {HttpClient} from '@angular/common/http';
-import {Component, Inject, Injectable, OnInit} from '@angular/core';
+import {Component, Inject, Injectable, OnInit, ViewChild} from '@angular/core';
 import {StudentsService} from './students.service';
 import {AppService} from "../../service-app.service";
 import {StudentModel} from "../student.model";
+import { MatMenuTrigger } from '@angular/material/menu';
 
 @Component({
   selector: 'app-students',
@@ -11,6 +12,7 @@ import {StudentModel} from "../student.model";
 })
 
 export class StudentsComponent implements OnInit {
+  @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
   public nombre = "Jorge Martinez ";
   public array: any[] = [];
   pageSize: number = 10;
@@ -22,10 +24,66 @@ export class StudentsComponent implements OnInit {
   currentNameFilter: string = "";
   tamanio: number = 0;
 
-  public cambiarNombre() {
-    this.nombre = "Ivan Martinez";
-  }
 
+  myFunctionName(studentLn:string):void{
+    this.sortBy(studentLn);
+    this.changeIconName();
+  }
+  iconName = 'keyboard_arrow_down';
+  clickedName : boolean = true;
+  changeIconName() {
+    if(this.clickedName==true){
+      this.iconLn = 'keyboard_arrow_down'
+      this.iconName = 'keyboard_arrow_up'
+      this.iconId = 'keyboard_arrow_down'
+      this.clickedName = false
+    }else {
+      this.clickedName = true
+      this.iconName = 'keyboard_arrow_down'
+      this.iconId = 'keyboard_arrow_down'
+      this.iconLn = 'keyboard_arrow_down'
+    }
+  }
+  myFunctionLn(studentLn:string):void{
+    this.sortBy(studentLn);
+    this.changeIconLn();
+  }
+  iconLn = 'keyboard_arrow_down';
+  clickedLn : boolean = true;
+  changeIconLn() {
+    if(this.clickedLn==true){
+      this.iconLn = 'keyboard_arrow_up'
+      this.iconName = 'keyboard_arrow_down'
+      this.iconId = 'keyboard_arrow_down'
+      this.clickedLn = false
+    }else {
+      this.clickedLn = true
+      this.iconLn = 'keyboard_arrow_down'
+      this.iconName = 'keyboard_arrow_down'
+      this.iconId = 'keyboard_arrow_down'
+      this.iconLn = 'keyboard_arrow_down'
+    }
+  }
+  myFunctionId(studentId:string):void{
+    this.sortBy(studentId);
+    this.changeIconId();
+  }
+  iconId = 'keyboard_arrow_down';
+  clickedId : boolean = true;
+  changeIconId() {
+    if(this.clickedId==true){
+      this.iconLn = 'keyboard_arrow_down'
+      this.iconName = 'keyboard_arrow_down'
+      this.iconId = 'keyboard_arrow_up'
+      this.clickedId = false
+    }else {
+      this.clickedId = true
+      this.iconId = 'keyboard_arrow_down'
+      this.iconName = 'keyboard_arrow_down'
+      this.iconId = 'keyboard_arrow_down'
+      this.iconLn = 'keyboard_arrow_down'
+    }
+  }
   populateForm(selectedRecord: StudentModel) {
     this.service.formDataStudent = Object.assign({}, selectedRecord);
   }

@@ -1,15 +1,4 @@
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-  <title>Document</title>
-</head>
+<form novalidate autocomplete="off" #form="ngForm" (submit)="addInscription(form)">
 <body>
 <div id="title" class="card bg-outline-primary mx-5">
   <div class="card-header  bg-outline-primary">
@@ -18,26 +7,23 @@
 </div>
 <div class="card-body">
   <div class="bg-body p-1 mx-5">
-    <form class = "bg-outline-primary ">
+    <form class="bg-outline-primary ">
       <div class="form-group col-5 p-3">
         <label for="codeInput">Código del Estudiante</label>
         <input class="form-control" id="codeInput" placeholder="Nombre materia"
                name="codeStudent" #codeStudent="ngModel" [(ngModel)]="service.formDataInscription.codeStudent"
                [class.invalid]="codeStudent.invalid && codeStudent.touched"
-               type="text" required data-error="Por favor, ingrese el nombre"
+               type="text" required data-error="Por favor, ingrese su codigo"
         >
       </div>
       <div class="form-group p-3 col-5">
-        <label for="nombreMateriaInput">Nombre Materia</label>
-        <div class="container">
-          <select class="form-select" required >
-            <option *ngFor="let item of inspectionList" [value]="item.subjectName">{{ item.subjectName }}</option>
-          </select>
-        </div>
-
+        <label for="subjectsName">Nombre Materia</label>
+        <select class="form-select" required>
+          <option id="subjectsName" *ngFor="let item of inspectionList" [value]="item.subjectName">{{ item.subjectName }}</option>
+        </select>
       </div>
       <div>
-        <button type="submit" class="btn btn-primary mx-3" >Inscribir</button>
+        <button type="submit" class="btn btn-primary mx-3">Inscribir</button>
       </div>
 
     </form>
@@ -45,4 +31,4 @@
   </div>
 </div>
 </body>
-</html>
+</form>

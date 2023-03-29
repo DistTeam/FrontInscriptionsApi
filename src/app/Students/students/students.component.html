@@ -19,25 +19,31 @@
   <div class="table-responsive">
     <hr />
     <table class="table table-striped table-bordered table-hover table-primary ">
-      <thead class="table table-success header-table">
+      <thead class="table table-success header-table" >
       <tr>
         <th class="text-left">
-          <div class="d-flex justify-content-between">
-            <span class="botton-th">Id</span>
-            <button type="button" class="btn btn-secondary" title="Ordenar en orden alfabetico, asendente y decendentemente" (click)="sortBy('studentId')">Ordenar</button>
+          <div class="d-flex justify-content-between" style="font-size: 1.5rem">
+            <button mat-button class="menu-button" title="Ordenar en orden alfabetico, asendente y decendentemente" (click)="myFunctionId('studentId')">
+              <mat-icon>{{iconId}}</mat-icon>
+              <span>Id</span>
+            </button>
           </div>
         </th>
         <!--<th scope="col">Nombre</th>-->
         <th class="text-left">
-          <div class="d-flex justify-content-between">
-            <span class="botton-th">Nombre</span>
-            <button type="button" class="btn btn-secondary" title="Ordenar en orden alfabetico, asendente y decendentemente" (click)="sortBy('studentName')">Ordenar</button>
+          <div class="d-flex justify-content-between"style="font-size: 1.5rem">
+            <button mat-button class="menu-button" title="Ordenar en orden alfabetico, asendente y decendentemente" (click)="myFunctionName('studentName')">
+              <mat-icon>{{iconName}}</mat-icon>
+              <span>Nombre</span>
+            </button>
           </div>
         </th>
         <th class="text-left">
-          <div class="d-flex justify-content-between">
-            <span class="botton-th">Apellido</span>
-            <button type="button" class="btn btn-secondary" title="Ordenar en orden alfabetico, asendente y decendentemente" (click)="sortBy('studentLn')">Ordenar</button>
+          <div class="d-flex justify-content-between" style="font-size: 1.5rem">
+            <button mat-button class="menu-button" title="Ordenar en orden alfabetico, asendente y decendentemente" (click)="myFunctionLn('studentLn')">
+              <mat-icon>{{iconLn}}</mat-icon>
+              <span>Apellido</span>
+            </button>
           </div>
         </th>
         <th scope="col">Tipo de documento</th>
