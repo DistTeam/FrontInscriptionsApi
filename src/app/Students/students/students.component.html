@@ -2,73 +2,101 @@
 <html>
 <head>
   <meta charset="utf-8" />
+  <link rel="stylesheet" type="text/css" href="./students.component.css">
   <title></title>
 </head>
 <body>
-  <div>
-    <input type="button" name="cambiar nombre" value="Cambiar nombre" (click)="cambiarNombre()" />
-    <div class="table-responsive">
-      <hr />
-      <table class="table table-striped table-bordered table-hover table-primary ">
-        <thead class="table table-success header-table" >
-          <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Apellido</th>
-            <th scope="col">Tipo de documento</th>
-            <th scope="col">Documento del identidad</th>
-            <th scope="col">Estado del estudiante</th>
-            <th scope="col">Genero</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let item of array">
-            <td>{{item.studentId}}</td>
-            <td>{{item.studentName}}</td>
-            <td>{{item.studentLn}}</td>
-            <td>{{item.typeDocStudent}}</td>
-            <td>{{item.studentDoc}}</td>
-            <td>
-              <p *ngIf="item.studentStatus === 0">
-                Matriculado
-              </p>
-              <p *ngIf="item.studentStatus === 1">
-                No matriculado
-              </p>
-              <p *ngIf="item.studentStatus === 2">
-                Semestre aplazado
-              </p>
-              <p *ngIf="item.studentStatus === 3">
-                Graduado
-              </p>
-              <ng-template #inactive>
-                Inactivo
-              </ng-template>
-            </td>
-
-            <td>
-              <p *ngIf="item.studentGenre === 'F'">
-                Femenino
-              </p>
-              <p *ngIf="item.studentGenre === 'M'">
-                Masculino
-              </p>
-              <p *ngIf="item.studentGenre === 'O'">
-                Otro
-              </p>
-              <ng-template #inactive>
-                Inactivo
-              </ng-template>
-            </td>
-          </tr>
-
-
-        </tbody>
-      </table>
-      <div class="pagination">
-      </div>
-    </div>
+<div>
+  <div class="input-group col-md-4">
+    <input class="form-control py-2" type="search" value="" placeholder="buscar" id="example-search-input" #myInput>
+    <span class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button" (click)="filterByName(myInput.value)">
+          <i>Buscar</i>
+        </button>
+      </span>
   </div>
+  <br />
+  <div class="table-responsive">
+    <hr />
+    <table class="table table-striped table-bordered table-hover table-primary ">
+      <thead class="table table-success header-table">
+      <tr>
+        <th class="text-left">
+          <div class="d-flex justify-content-between">
+            <span class="botton-th">Id</span>
+            <button type="button" class="btn btn-secondary" title="Ordenar en orden alfabetico, asendente y decendentemente" (click)="sortBy('studentId')">Ordenar</button>
+          </div>
+        </th>
+        <!--<th scope="col">Nombre</th>-->
+        <th class="text-left">
+          <div class="d-flex justify-content-between">
+            <span class="botton-th">Nombre</span>
+            <button type="button" class="btn btn-secondary" title="Ordenar en orden alfabetico, asendente y decendentemente" (click)="sortBy('studentName')">Ordenar</button>
+          </div>
+        </th>
+        <th class="text-left">
+          <div class="d-flex justify-content-between">
+            <span class="botton-th">Apellido</span>
+            <button type="button" class="btn btn-secondary" title="Ordenar en orden alfabetico, asendente y decendentemente" (click)="sortBy('studentLn')">Ordenar</button>
+          </div>
+        </th>
+        <th scope="col">Tipo de documento</th>
+        <th scope="col">Documento del identidad</th>
+        <th scope="col">Estado del estudiante</th>
+        <th scope="col">Genero</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of array">
+        <td>{{item.studentId}}</td>
+        <td>{{item.studentName}}</td>
+        <td>{{item.studentLn}}</td>
+        <td>{{item.typeDocStudent}}</td>
+        <td>{{item.studentDoc}}</td>
+        <td>
+          <p *ngIf="item.studentStatus === 0">
+            Matriculado
+          </p>
+          <p *ngIf="item.studentStatus === 1">
+            No matriculado
+          </p>
+          <p *ngIf="item.studentStatus === 2">
+            Semestre aplazado
+          </p>
+          <p *ngIf="item.studentStatus === 3">
+            Graduado
+          </p>
+          <ng-template #inactive>
+            Inactivo
+          </ng-template>
+        </td>
+        <td>
+          <p *ngIf="item.studentGenre == 'M'">
+            Masculino
+          </p>
+          <p *ngIf="item.studentGenre == 'F'">
+            Femenino
+          </p>
+          <p *ngIf="item.studentGenre == 'O'">
+            Otro
+          </p>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item"><input class="page-link" type="button" value="Anterior" (click)="getBackPage()" /> </li>
+        <li class="page-item"><input class="page-link" type="button" value={{backPage}} (click)="getPageButtons(1)" /></li>
+        <li class="page-item"><input class="page-link" type="button" value={{currentPage}} /></li>
+        <li class="page-item"><input class="page-link" type="button" value={{netxPage}} (click)="getPageButtons(0)" /></li>
+        <li class="page-item"><input class="page-link" type="button" value="Siguiente" (click)="getNextPage()" /></li>
+      </ul>
+      <p><strong> {{tamanio}}</strong></p>
+    </nav>
+  </div>
+</div>
+<script src="https://kit.fontawesome.com/3ec369e78b.js" crossorigin="anonymous"></script>
 </body>
 </html>
 
