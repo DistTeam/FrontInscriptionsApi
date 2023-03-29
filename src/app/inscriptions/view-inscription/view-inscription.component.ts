@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {Observable} from "rxjs";
-import {SericeSubjectsService} from "../../serivce-subjects.service";
+import {AppService} from "../../service-app.service";
 import * as XLSX from 'xlsx';
 import { FileSaverService } from 'ngx-filesaver';
 
@@ -25,7 +25,7 @@ export class ViewInscriptionComponent {
   sortAsc: boolean = true;
   selectedState = 1;
   activoSeleccionado: string ='1';
-  constructor( private service:SericeSubjectsService,private fileSaverService: FileSaverService) {
+  constructor(private service:AppService, private fileSaverService: FileSaverService) {
   }
 
   ngOnInit(): void {

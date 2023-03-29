@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable, of} from "rxjs";
-import {SericeSubjectsService} from "src/app/serivce-subjects.service";
+import {AppService} from "src/app/service-app.service";
 import * as XLSX from 'xlsx';
 import { FileSaverService } from 'ngx-filesaver';
 
@@ -30,7 +30,7 @@ export class ShowInspectionComponent implements OnInit{
 
 
 
-  constructor( private service:SericeSubjectsService,private fileSaverService: FileSaverService) {
+  constructor(private service:AppService, private fileSaverService: FileSaverService) {
   }
 
   ngOnInit(): void {
