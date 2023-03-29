@@ -20,7 +20,7 @@
     <p class="designation">Usuario</p>
     <mat-divider></mat-divider>
 
-    <button mat-button class="menu-button" routerLink="/">
+    <button mat-button class="menu-button" routerLink="home-component">
       <mat-icon>home</mat-icon>
       <span>Inicio</span>
     </button>
@@ -33,7 +33,7 @@
     <mat-menu #homeMenu="matMenu">
       <button mat-menu-item routerLink="/create-student">Agregar estudiantes</button>
       <button mat-menu-item routerLink="/edit-student">Modificar estudiantes</button>
-      <button mat-menu-item routerLink="/home">Ver estudiantes</button>
+      <button mat-menu-item routerLink="view-student">Ver estudiantes</button>
     </mat-menu>
 
     <button class="menu-button" mat-button [matMenuTriggerFor]="profileMenu">
