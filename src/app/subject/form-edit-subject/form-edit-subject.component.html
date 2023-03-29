@@ -1,6 +1,6 @@
 <form novalidate autocomplete="off" #form="ngForm" (submit)="editSubject(form)">
   <body>
-  <input type="hidden" name="jeje" [value]="service.formDataSubject.subjectId"/>
+  <input type="" name="subjectId" [value]="subjectId"/>
   <div id="title" class="card bg-outline-primary mx-5">
     <div class="card-header  bg-outline-primary">
       <h2 style="font-size: 2rem; margin-left: 1.9%"> Agregar Materia</h2>
@@ -28,15 +28,20 @@
         <label class="btn btn-outline-primary">
           <input #subjectStatus="ngModel" [(ngModel)]="service.formDataSubject.subjectStatus"
                  [class.invalid]="subjectStatus.invalid && subjectStatus.touched"
-                 type="radio" name="subjectStatus" id="option1" autocomplete="off" required value=1> Activa
+                 type="radio" name="subjectStatusGroup" id="option1" autocomplete="off" required value=1> Activa
         </label>
         <label class="btn btn-outline-primary">
           <input #subjectStatus="ngModel" [(ngModel)]="service.formDataSubject.subjectStatus"
                  [class.invalid]="subjectStatus.invalid && subjectStatus.touched"
-                 type="radio" name="subjectStatus" id="option2" autocomplete="off" required value=0> Inactiva
+                 type="radio" name="subjectStatusGroup" id="option2" autocomplete="off" required value=0> Inactiva
         </label>
       </div>
 
+      <div>
+        <button class="mat-button" [routerLink]="['/view-subject']" type="submit" value="submit" style="float: left;" ali
+                class="btn btn-primary mx-3">Volver
+        </button>
+      </div>
       <div>
         <button class="mat-button" [disabled]="form.invalid" type="submit" value="submit" style="float: right;" ali
                 class="btn btn-primary mx-3">Crear Materia

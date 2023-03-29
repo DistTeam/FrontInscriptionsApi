@@ -1,17 +1,45 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AppService} from "src/app/service-app.service";
 import {ToastrService} from "ngx-toastr";
 import {NgForm} from "@angular/forms";
 import {SubjectModel} from "../subject.model";
-
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'form-edit-subject',
   templateUrl: './form-edit-subject.component.html',
   styleUrls: ['./form-edit-subject.component.css']
 })
-export class FormEditSubjectComponent {
-  constructor(private toastr: ToastrService,public service:AppService) {
+export class FormEditSubjectComponent implements OnInit {
+  public subjectId: number;
+  public subject: SubjectModel;
+
+  constructor(
+    private toastr: ToastrService,
+    public service: AppService,
+    private route: ActivatedRoute
+  ) {
+  }
+
+  ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      this.subjectId = params['id'];
+      this.getSubject(this.subjectId);
+
+    });
+  }
+
+  getSubject(id: number): void {
+    this.service.getSubjectById(id).subscribe(
+      res => {
+        this.subject = res;
+        this.toastr.success("Estudiante cargado", "Inscripciones UPTC")
+      },
+      err => {
+        this.toastr.error(err);
+        console.log(err);
+      }
+    );
   }
 
   editSubject(form: NgForm) {
@@ -22,6 +50,7 @@ export class FormEditSubjectComponent {
       },
       err => {
         this.toastr.error(err);
+        console.log(err);
       }
     );
   }
@@ -29,16 +58,5 @@ export class FormEditSubjectComponent {
   resetForm(form: NgForm) {
     form.form.reset();
     this.service.formDataSubject = new SubjectModel();
-  };
-  ngOnInit(): void {
   }
-
-
-
 }
-
-
-
-
-
-

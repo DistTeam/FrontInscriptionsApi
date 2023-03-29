@@ -14,7 +14,7 @@ import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   { path: 'create-student', component: FormStudentComponent},
-  {path:'edit-student',component: FormEditStudentComponent},
+  { path: 'edit-student/:id', component: FormEditStudentComponent },
   {path:'create-subject',component:FormSubjectComponent},
   {path:'edit-subject',component: FormEditSubjectComponent},
   {path:'view-subject',component: ShowInspectionComponent},
@@ -22,7 +22,8 @@ const routes: Routes = [
   {path:'edit-inscription',component: FormEditInscriptionsComponent},
   {path:'view-inscription',component: ViewInscriptionComponent},
   {path:'view-student', component: StudentsComponent},
-  {path: 'home-component', component: HomeComponent}
+  {path: 'home-component', component: HomeComponent},
+  { path: 'edit-subject/:id', component: FormEditSubjectComponent }
 ];
 @NgModule({
   declarations: [],

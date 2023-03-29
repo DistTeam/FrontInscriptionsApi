@@ -19,8 +19,7 @@ export class AppService {
   return this.http.get<any>(this.APIUrl+'/Subjects');
   }
   putSubject(){
-    return this.http.put(`${this.APIUrl}/subjects${this.formDataSubject.subjectId}`,this.formDataSubject);
-
+    return this.http.put(`${this.APIUrl}/subjects/${this.formDataSubject.subjectId}`,this.formDataSubject);
   }
   putStudent(){
     return this.http.put(`${this.APIUrl}/students${this.formDataStudent.studentId}`,this.formDataStudent);
@@ -34,7 +33,9 @@ export class AppService {
   updateInspection(id:number|String, data:any){
   return this.http.put(this.APIUrl+`/Subjects/${id}`, data);
   }
-
+  getSubjectById(subjectId: number): Observable<SubjectModel> {
+    return this.http.get<SubjectModel>(`${this.APIUrl}/subjects/${subjectId}`);
+  }
   postInscription(){
     return this.http.post(this.APIUrl+'/inscription',this.formDataInscription);
   }

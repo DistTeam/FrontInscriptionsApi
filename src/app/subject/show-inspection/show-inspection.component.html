@@ -42,7 +42,7 @@
         </ng-template>
       </td>
       <td>
-        <button [routerLinkActive]="['link-active']" routerLink="/edit-subject" type="submit" class="btn btn-primary mx-3" style="float: right;">Editar</button>
+        <button  (click)="populateForm(item)" [routerLink]="['/edit-subject', item.subjectId]" type="submit" class="btn btn-primary mx-3" style="float: right;">Editar</button>
       </td>
     </tr>
     <p class="totalRegisters">Registros totales: {{inspectionList.length}}</p>

@@ -5,6 +5,7 @@ import * as XLSX from 'xlsx';
 import { FileSaverService } from 'ngx-filesaver';
 import {SubjectModel} from "../subject.model";
 import {FormEditSubjectComponent} from "../form-edit-subject/form-edit-subject.component";
+import {Router, Routes} from "@angular/router";
 
 @Component({
   selector: 'app-show-inspection',
@@ -12,6 +13,8 @@ import {FormEditSubjectComponent} from "../form-edit-subject/form-edit-subject.c
   styleUrls: ['./show-inspection.component.css']
 })
 export class ShowInspectionComponent implements OnInit{
+  constructor(private service:AppService, private fileSaverService: FileSaverService,private router: Router) {
+  }
   populateForm(selectedRecord:SubjectModel) {
    this.service.formDataSubject = Object.assign({},selectedRecord);
   }
@@ -31,13 +34,6 @@ export class ShowInspectionComponent implements OnInit{
   selectedState = 1;
   activoSeleccionado: string ='1';
   listFilter: any[]=[]
-
-
-
-
-  constructor(private service:AppService, private fileSaverService: FileSaverService) {
-  }
-
   ngOnInit(): void {
     this.inspectionList$ = this.service.getInspectionList();
     this.inspectionList$.subscribe((inspectionList) => {
