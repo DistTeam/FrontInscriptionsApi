@@ -16,8 +16,14 @@ export class AppService {
   getInspectionList():Observable<any[]>{
   return this.http.get<any>(this.APIUrl+'/Subjects');
   }
+  putSubject(){
+    return this.http.put(`${this.APIUrl}/subjects${this.formDataSubject.subjectId}`,this.formDataSubject);
+  }
   postSubject(){
     return this.http.post(this.APIUrl+'/subjects',this.formDataSubject);
+  }
+  putStudent(){
+    return this.http.put(`${this.APIUrl}/students${this.formDataStudent.studentId}`,this.formDataStudent);
   }
   postStudent(){
     return this.http.post(this.APIUrl+'/students',this.formDataStudent);

@@ -3,6 +3,8 @@ import {Observable, of} from "rxjs";
 import {AppService} from "src/app/service-app.service";
 import * as XLSX from 'xlsx';
 import { FileSaverService } from 'ngx-filesaver';
+import {SubjectModel} from "../subject.model";
+import {FormEditSubjectComponent} from "../form-edit-subject/form-edit-subject.component";
 
 @Component({
   selector: 'app-show-inspection',
@@ -10,6 +12,9 @@ import { FileSaverService } from 'ngx-filesaver';
   styleUrls: ['./show-inspection.component.css']
 })
 export class ShowInspectionComponent implements OnInit{
+  populateForm(selectedRecord:SubjectModel) {
+   this.service.formDataSubject = Object.assign({},selectedRecord);
+  }
   exportTableToExcel() {
     const table = document.getElementById('myTable'); // Replace 'myTable' with the ID of your table
     const workbook = XLSX.utils.table_to_book(table);
