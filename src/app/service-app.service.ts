@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import {StudentModel} from "./Students/student.model";
+import {InscriptionsModel} from "./inscriptions/InscriptionsModel";
 import {SubjectModel} from "./subject/subject.model";
 
 @Injectable({
@@ -13,14 +14,13 @@ export class AppService {
   constructor(private http:HttpClient) { }
   formDataStudent:StudentModel = new StudentModel();
   formDataSubject:SubjectModel = new SubjectModel();
+  formDataInscription:InscriptionsModel = new InscriptionsModel();
   getInspectionList():Observable<any[]>{
   return this.http.get<any>(this.APIUrl+'/Subjects');
   }
   putSubject(){
     return this.http.put(`${this.APIUrl}/subjects${this.formDataSubject.subjectId}`,this.formDataSubject);
-  }
-  postSubject(){
-    return this.http.post(this.APIUrl+'/subjects',this.formDataSubject);
+
   }
   putStudent(){
     return this.http.put(`${this.APIUrl}/students${this.formDataStudent.studentId}`,this.formDataStudent);
@@ -35,9 +35,15 @@ export class AppService {
   return this.http.put(this.APIUrl+`/Subjects/${id}`, data);
   }
 
+  postInscription(){
+    return this.http.post(this.APIUrl+'/inscription',this.formDataInscription);
+  }
   getInspectionListInscriptions():Observable<any[]>{
     return this.http.get<any>(this.inscriptionAPIUrl+'/all');
 
+  }
+  postSubject(){
+    return this.http.post(this.APIUrl+'/subjects',this.formDataSubject);
   }
 
   getInspectionById(id: number | string): Observable<any> {

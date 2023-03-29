@@ -19,13 +19,17 @@
     <form class = "bg-outline-primary ">
       <div class="form-group col-5 p-3">
         <label for="codeInput">Código del Estudiante</label>
-        <input type="code" class="form-control" id="codeInput" placeholder="Nombre materia" required data-error="Por favor, ingrese el codigo">
+        <input class="form-control" id="codeInput" placeholder="Nombre materia"
+               name="codeStudent" #codeStudent="ngModel" [(ngModel)]="service.formDataInscription.codeStudent"
+               [class.invalid]="codeStudent.invalid && codeStudent.touched"
+               type="text" required data-error="Por favor, ingrese el nombre"
+        >
       </div>
       <div class="form-group p-3 col-5">
         <label for="nombreMateriaInput">Nombre Materia</label>
         <div class="container">
           <select class="form-select" required >
-            <option> </option>
+            <option *ngFor="let item of inspectionList" [value]="item.subjectName">{{ item.subjectName }}</option>
           </select>
         </div>
 

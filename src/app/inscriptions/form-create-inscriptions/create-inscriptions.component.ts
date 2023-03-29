@@ -1,20 +1,48 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {AppService} from "../../service-app.service";
+import {ToastrService} from "ngx-toastr";
+import {NgForm} from "@angular/forms";
+import {StudentModel} from "../../Students/student.model";
+import {InscriptionsModel} from "../InscriptionsModel";
+import {Observable} from "rxjs";
+
 
 @Component({
   selector: 'app-form-create-inscriptions',
   templateUrl: './create-inscriptions.component.html',
   styleUrls: ['./create-inscriptions.component.css']
 })
-export class CreateInscriptionsComponent {
+export class CreateInscriptionsComponent  implements OnInit{
+
+  inspectionList$!:Observable<any[]>;
+  inspectionList: any[]=[];
   fechaActual: string;
 
-
-  constructor() {
-    const fecha = new Date();
-    this.fechaActual = fecha.toLocaleDateString();
-
+  constructor(public service: AppService, private toastr: ToastrService) {
   }
-  submitForm() {
-    // Aquí se puede procesar el envío del formulario
+
+  ngOnInit(): void {
+    this.inspectionList$ = this.service.getInspectionList();
+    this.inspectionList$.subscribe((inspectionList) => {
+      this.inspectionList = inspectionList;
+    });
   }
+
+  addInscription(form: NgForm) {
+    this.service.postInscription().subscribe(
+      res => {
+        this.toastr.success('Agregado con exito', 'Inscripciones UPTC');
+        this.resetForm(form);
+      },
+      err => {
+        this.toastr.error(err);
+      }
+    );
+  }
+
+  resetForm(form: NgForm) {
+    form.form.reset();
+    this.service.formDataInscription = new InscriptionsModel();
+  };
+
 }
