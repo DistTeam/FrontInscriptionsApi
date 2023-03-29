@@ -6,6 +6,7 @@ import { FileSaverService } from 'ngx-filesaver';
 import {SubjectModel} from "../subject.model";
 import {FormEditSubjectComponent} from "../form-edit-subject/form-edit-subject.component";
 import {Router, Routes} from "@angular/router";
+import {ShowInspectionService} from "./show-inspection.service";
 
 @Component({
   selector: 'app-show-inspection',
@@ -13,10 +14,79 @@ import {Router, Routes} from "@angular/router";
   styleUrls: ['./show-inspection.component.css']
 })
 export class ShowInspectionComponent implements OnInit{
-  constructor(private service:AppService, private fileSaverService: FileSaverService,private router: Router) {
+
+  public nombre = "Jorge Martinez ";
+  public array: any[] = [];
+  pageSize: number = 10;
+  backPage: number = 0;
+  currentPage: number = 1;
+  netxPage: number = 2;
+  currentSortOrder: string = "asc";
+  curreentSortBy: string = "id";
+  tamanio: number = 0;
+  constructor(private service:AppService,private showSubjectService:ShowInspectionService, private fileSaverService: FileSaverService,private router: Router) {
   }
   populateForm(selectedRecord:SubjectModel) {
    this.service.formDataSubject = Object.assign({},selectedRecord);
+  }
+  myFunctionName(studentLn:string):void{
+    this.sortBy(studentLn);
+    this.changeIconName();
+  }
+  iconName = 'keyboard_arrow_down';
+  clickedName : boolean = true;
+  changeIconName() {
+    if(this.clickedName==true){
+      this.iconLn = 'keyboard_arrow_down'
+      this.iconName = 'keyboard_arrow_up'
+      this.iconId = 'keyboard_arrow_down'
+      this.clickedName = false
+    }else {
+      this.clickedName = true
+      this.iconName = 'keyboard_arrow_down'
+      this.iconId = 'keyboard_arrow_down'
+      this.iconLn = 'keyboard_arrow_down'
+    }
+  }
+  myFunctionLn(studentLn:string):void{
+    this.sortBy(studentLn);
+    this.changeIconLn();
+  }
+  iconLn = 'keyboard_arrow_down';
+  clickedLn : boolean = true;
+  changeIconLn() {
+    if(this.clickedLn==true){
+      this.iconLn = 'keyboard_arrow_up'
+      this.iconName = 'keyboard_arrow_down'
+      this.iconId = 'keyboard_arrow_down'
+      this.clickedLn = false
+    }else {
+      this.clickedLn = true
+      this.iconLn = 'keyboard_arrow_down'
+      this.iconName = 'keyboard_arrow_down'
+      this.iconId = 'keyboard_arrow_down'
+      this.iconLn = 'keyboard_arrow_down'
+    }
+  }
+  myFunctionId(sort:string):void{
+    this.sortBy(sort);
+    this.changeIconId();
+  }
+  iconId = 'keyboard_arrow_down';
+  clickedId : boolean = true;
+  changeIconId() {
+    if(this.clickedId==true){
+      this.iconLn = 'keyboard_arrow_down'
+      this.iconName = 'keyboard_arrow_down'
+      this.iconId = 'keyboard_arrow_up'
+      this.clickedId = false
+    }else {
+      this.clickedId = true
+      this.iconId = 'keyboard_arrow_down'
+      this.iconName = 'keyboard_arrow_down'
+      this.iconId = 'keyboard_arrow_down'
+      this.iconLn = 'keyboard_arrow_down'
+    }
   }
   exportTableToExcel() {
     const table = document.getElementById('myTable'); // Replace 'myTable' with the ID of your table
@@ -26,40 +96,77 @@ export class ShowInspectionComponent implements OnInit{
     const blob = new Blob([buffer], { type: 'application/octet-stream' });
     this.fileSaverService.save(blob, fileName);
   }
-  public page: number=1;
-  inspectionList$!:Observable<any[]>;
-  inspectionList: any[]=[];
-  sortColumn: string = 'name';
-  sortAsc: boolean = true;
-  selectedState = 1;
-  activoSeleccionado: string ='1';
-  listFilter: any[]=[]
   ngOnInit(): void {
-    this.inspectionList$ = this.service.getInspectionList();
-    this.inspectionList$.subscribe((inspectionList) => {
-      this.inspectionList = inspectionList;
+    this.getSubjects("id","asc",1,10);
+    };
+
+  getSubjects(sortBy: string, sortOrder: string, page: number , pageSize: number): void {
+    this.showSubjectService.getSubjects(sortBy, sortOrder, page, pageSize).subscribe(response => {
+      // @ts-ignore
+      this.array = response.body.items
+      console.log(this.array)
+      // @ts-ignore
+      const tamsubjects = response.headers.get("tamanio-subjects");
+      this.tamanio = tamsubjects;
+      console.log('El valor de tamsubjects es: ' + tamsubjects);
     });
   }
-  getInspectionList() {
-    this.inspectionList$ = this.service.getInspectionList();
-    this.inspectionList$.subscribe((inspectionList) => {
-      this.inspectionList = inspectionList;
-    });
+  public getNextPage() {
+    if (this.currentPage < this.getMaxPage()) {
+      this.getSubjects(this.curreentSortBy, this.currentSortOrder, this.currentPage = this.currentPage + 1, this.pageSize);
+      this.getNumberNextPage();
+      this.getNumberBackPage();
+    }
   }
-  sortByName(): void {
-    this.sortColumn = 'subjectName';
-    this.sortAsc = !this.sortAsc;
-    this.inspectionList.sort((a, b) => {
-      const nameA = a.subjectName.toUpperCase();
-      const nameB = b.subjectName.toUpperCase();
-      if (nameA < nameB) {
-        return this.sortAsc ? -1 : 1;
+  public getBackPage() {
+    if (this.currentPage > 1) {
+      this.getSubjects(this.curreentSortBy, this.currentSortOrder, this.currentPage = this.currentPage - 1, this.pageSize);
+      this.actualiceButtons();
+    }
+  }
+
+  public getNumberNextPage() {
+    this.netxPage = this.currentPage + 1;
+  }
+
+  public getNumberBackPage() {
+    this.backPage = this.currentPage - 1;
+  }
+
+  public getPageButtons(page: number) {
+    if (page == 0) {
+      if (this.currentPage < this.getMaxPage()) {
+        this.getSubjects(this.curreentSortBy, this.currentSortOrder, this.netxPage, this.pageSize);
+        this.currentPage = this.currentPage + 1;
+        this.actualiceButtons();
       }
-      if (nameA > nameB) {
-        return this.sortAsc ? 1 : -1;
+    }
+    else {
+      if (this.backPage > 0) {
+        this.getSubjects(this.curreentSortBy, this.currentSortOrder, this.backPage, this.pageSize);
+        this.currentPage = this.currentPage - 1;
+        this.actualiceButtons();
       }
-      return 0;
-    });
+    }
+  }
+
+  public sortBy(sortBy: string) {
+    if (this.currentSortOrder == "asc") {
+      this.currentSortOrder = "desc";
+    } else if (this.currentSortOrder == "desc") {
+      this.currentSortOrder = "asc";
+    }
+    this.curreentSortBy = sortBy;
+    this.getSubjects(this.curreentSortBy, this.currentSortOrder, this.currentPage, this.pageSize);
+  }
+
+  private actualiceButtons() {
+    this.getNumberBackPage();
+    this.getNumberNextPage();
+  }
+
+  private getMaxPage(): number {
+    return (this.tamanio / this.pageSize);
   }
 
 

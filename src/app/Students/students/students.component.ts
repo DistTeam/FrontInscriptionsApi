@@ -25,8 +25,8 @@ export class StudentsComponent implements OnInit {
   tamanio: number = 0;
 
 
-  myFunctionName(studentLn:string):void{
-    this.sortBy(studentLn);
+  myFunctionName(sort:string):void{
+    this.sortBy(sort);
     this.changeIconName();
   }
   iconName = 'keyboard_arrow_down';
@@ -163,6 +163,7 @@ export class StudentsComponent implements OnInit {
     this.studentsService.getStudents(pageNumber, pageSize, sortOrder, sortBy, searchString).subscribe(response => {
       // @ts-ignore
       this.array = response.body;
+      console.log(this.array);
       // @ts-ignore
       const tamstudents = response.headers.get("tamanio");
       this.tamanio = tamstudents;
