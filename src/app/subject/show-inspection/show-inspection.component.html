@@ -9,14 +9,14 @@
     <th scope="col"><div class="d-flex justify-content-between">
       <button mat-button class="menu-button" title="Ordenar en orden alfabetico, asendente y decendentemente" (click)="myFunctionId('id')">
         <mat-icon>{{iconId}}</mat-icon>
-        <span>Id</span>
+        <strong style="font-size: 16px">Id</strong>
       </button>
     </div></th>
     <th class="text-left">
       <div class="d-flex justify-content-between">
         <button mat-button class="menu-button" title="Ordenar en orden alfabetico, asendente y decendentemente" (click)="myFunctionName('name')">
           <mat-icon>{{iconName}}</mat-icon>
-          <span>Nombre</span>
+          <strong style="font-size: 16px">Nombre</strong>
         </button>
       </div>
     </th>
@@ -24,12 +24,12 @@
       <div class="d-flex justify-content-between">
         <button mat-button class="menu-button" title="Ordenar en orden alfabetico, asendente y decendentemente" (click)="myFunctionLn('capacity')">
           <mat-icon>{{iconLn}}</mat-icon>
-          <span>Capacidad</span>
+          <strong style="font-size: 16px">Capacidad</strong>
         </button>
       </div>
     </th>
-    <th scope="col" >Estado de la materia</th>
-    <th scope="col" >Editar</th>
+    <th scope="col"  class="thead-pers">Estado de la materia</th>
+    <th scope="col"  class="thead-pers">Editar</th>
   </tr>
   </thead>
   <tbody>

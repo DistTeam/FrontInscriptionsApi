@@ -25,7 +25,7 @@
           <div class="d-flex justify-content-between" style="font-size: 1.5rem">
             <button mat-button class="menu-button" title="Ordenar en orden alfabetico, asendente y decendentemente" (click)="myFunctionId('studentId')">
               <mat-icon>{{iconId}}</mat-icon>
-              <span>Id</span>
+              <strong style="font-size: 16px">Id</strong>
             </button>
           </div>
         </th>
@@ -34,7 +34,7 @@
           <div class="d-flex justify-content-between"style="font-size: 1.5rem">
             <button mat-button class="menu-button" title="Ordenar en orden alfabetico, asendente y decendentemente" (click)="myFunctionName('studentName')">
               <mat-icon>{{iconName}}</mat-icon>
-              <span>Nombre</span>
+              <strong class="thead-pers" style="font-size: 16px">Nombre</strong>
             </button>
           </div>
         </th>
@@ -42,15 +42,15 @@
           <div class="d-flex justify-content-between" style="font-size: 1.5rem">
             <button mat-button class="menu-button" title="Ordenar en orden alfabetico, asendente y decendentemente" (click)="myFunctionLn('studentLn')">
               <mat-icon>{{iconLn}}</mat-icon>
-              <span>Apellido</span>
+              <strong style="font-size: 16px">Apellido</strong>
             </button>
           </div>
         </th>
-        <th scope="col">Tipo de documento</th>
-        <th scope="col">Documento del identidad</th>
-        <th scope="col">Estado del estudiante</th>
-        <th scope="col">Genero</th>
-        <th scope="col" style="font-size: 20px;">Editar</th>
+        <th scope="col" class="thead-pers">Tipo de documento</th>
+        <th scope="col" class="thead-pers">Documento del identidad</th>
+        <th scope="col" class="thead-pers">Estado del estudiante</th>
+        <th scope="col" class="thead-pers">Genero</th>
+        <th scope="col" class="thead-pers">Editar</th>
       </tr>
       </thead>
       <tbody>
