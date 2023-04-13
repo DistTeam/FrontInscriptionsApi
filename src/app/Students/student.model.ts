@@ -6,4 +6,5 @@ export class StudentModel{
   studentDoc:string = '';
   studentStatus:number = 0;
   studentGenre:string = '';
+  studentPhoto:string='';
 }
