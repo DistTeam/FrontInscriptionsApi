@@ -90,7 +90,7 @@
         </td>
 
         <td>
-          <img src={{item.studentPhoto}} style="width: 90px; height: 90px;">
+          <img src={{item.studentPhoto}} style="width: 90px; height: 90px;" class="cursor-pointer"  (click)="populateForm(item)" [routerLink]="['/details-student', item.studentId]">
         </td>
         <td class="col-md text-center" style="vertical-align: middle">
           <button  (click)="populateForm(item)" [routerLink]="['/edit-student/', item.studentId]" type="submit" class="btn btn-primary">Editar</button>
