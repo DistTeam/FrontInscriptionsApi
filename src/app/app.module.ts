@@ -26,7 +26,7 @@ import {FormStudentComponent} from "./Students/form-create-student/form-student.
 import {FormEditInscriptionsComponent} from "./inscriptions/form-edit-inscriptions/form-edit-inscriptions.component";
 import {ToastrModule} from "ngx-toastr";
 import {StudentsComponent} from "./Students/students/students.component";
-import {HomeComponent} from "./home/home.component";
+import {DetailsSudentComponent} from "./Students/details-sudent/details-sudent.component";
 
 
 @NgModule({
@@ -42,7 +42,8 @@ import {HomeComponent} from "./home/home.component";
     ViewInscriptionComponent,
     ShowInspectionComponent,
     FormStudentComponent,
-    StudentsComponent, HomeComponent
+    StudentsComponent,
+    DetailsSudentComponent
   ],
   imports: [
     BrowserModule,
