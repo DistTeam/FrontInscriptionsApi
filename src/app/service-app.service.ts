@@ -1,53 +1,75 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import {HttpClient} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
 import {StudentModel} from "./Students/student.model";
 import {InscriptionsModel} from "./inscriptions/InscriptionsModel";
 import {SubjectModel} from "./subject/subject.model";
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppService {
-  readonly APIUrl="https://localhost:7243/api"
-  readonly inscriptionAPIUrl="https://localhost:7243/api/Inscriptions"
-  constructor(private http:HttpClient) { }
-  formDataStudent:StudentModel = new StudentModel();
-  formDataSubject:SubjectModel = new SubjectModel();
-  formDataInscription:InscriptionsModel = new InscriptionsModel();
-  getInspectionList():Observable<any[]>{
-  return this.http.get<any>(this.APIUrl+'/Subjects');
+  readonly APIUrl = "https://localhost:7243/api"
+  readonly inscriptionAPIUrl = "https://localhost:7243/api/Inscriptions"
+
+  constructor(private http: HttpClient) {
   }
-  putSubject(){
-    return this.http.put(`${this.APIUrl}/subjects/${this.formDataSubject.subjectId}`,this.formDataSubject);
+
+  formDataStudent: StudentModel = new StudentModel();
+  formDataSubject: SubjectModel = new SubjectModel();
+  formDataInscription: InscriptionsModel = new InscriptionsModel();
+
+  getInspectionList(): Observable<any[]> {
+    return this.http.get<any>(this.APIUrl + '/Subjects');
   }
-  putStudent(){
-    return this.http.put(`${this.APIUrl}/students/${this.formDataStudent.studentId}`,this.formDataStudent);
+
+  putSubject() {
+    return this.http.put(`${this.APIUrl}/subjects/${this.formDataSubject.subjectId}`, this.formDataSubject);
   }
-  postStudent(){
-    return this.http.post(this.APIUrl+'/students',this.formDataStudent);
+
+  putStudent() {
+    return this.http.put(`${this.APIUrl}/students/${this.formDataStudent.studentId}`, this.formDataStudent);
   }
-  addInspection(data:any){
-  return this.http.post(this.APIUrl+'/Subjects', data);
+
+  postStudent() {
+    return this.http.post(this.APIUrl + '/students/url', this.formDataStudent);
   }
-  updateInspection(id:number|String, data:any){
-  return this.http.put(this.APIUrl+`/Subjects/${id}`, data);
+
+  uploadImg(imageFile: File) {
+    const formData = new FormData();
+    const newFileName = this.formDataStudent.studentName + this.formDataStudent.studentDoc + ".jpg";
+    formData.append('file', imageFile, newFileName);
+    return this.http.post<string>(this.APIUrl+'/students/uploadImage', formData);
   }
+
+  addInspection(data: any) {
+    return this.http.post(this.APIUrl + '/Subjects', data);
+  }
+
+  updateInspection(id: number | String, data: any) {
+    return this.http.put(this.APIUrl + `/Subjects/${id}`, data);
+  }
+
   getSubjectById(subjectId: number): Observable<SubjectModel> {
     return this.http.get<SubjectModel>(`${this.APIUrl}/subjects/${subjectId}`);
   }
+
   getStudentId(studentId: number): Observable<StudentModel> {
     return this.http.get<StudentModel>(`${this.APIUrl}/students/${studentId}`);
   }
-  postInscription(){
-    return this.http.post(this.APIUrl+'/inscription',this.formDataInscription);
+
+  postInscription() {
+    return this.http.post(this.APIUrl + '/inscription', this.formDataInscription);
   }
-  getInspectionListInscriptions():Observable<any[]>{
-    return this.http.get<any>(this.inscriptionAPIUrl+'/all');
+
+  getInspectionListInscriptions(): Observable<any[]> {
+    return this.http.get<any>(this.inscriptionAPIUrl + '/all');
 
   }
-  postSubject(){
-    return this.http.post(this.APIUrl+'/subjects',this.formDataSubject);
+
+  postSubject() {
+    return this.http.post(this.APIUrl + '/subjects', this.formDataSubject);
   }
 
   getInspectionById(id: number | string): Observable<any> {
