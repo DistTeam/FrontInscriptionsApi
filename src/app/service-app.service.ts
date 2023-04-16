@@ -5,6 +5,7 @@ import {StudentModel} from "./Students/student.model";
 import {InscriptionsModel} from "./inscriptions/InscriptionsModel";
 import {SubjectModel} from "./subject/subject.model";
 import {map} from 'rxjs/operators';
+import {InscriptionForPost} from "./inscriptions/InscriptionForPost";
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,7 @@ export class AppService {
   formDataStudent: StudentModel = new StudentModel();
   formDataSubject: SubjectModel = new SubjectModel();
   formDataInscription: InscriptionsModel = new InscriptionsModel();
-
+  formDataInscriptionPost:InscriptionForPost= new InscriptionForPost();
   getInspectionList(): Observable<any[]> {
     return this.http.get<any>(this.APIUrl + '/Subjects');
   }
@@ -47,8 +48,12 @@ export class AppService {
     return this.http.post(this.APIUrl + '/Subjects', data);
   }
 
-  updateInspection(id: number | String, data: any) {
-    return this.http.put(this.APIUrl + `/Subjects/${id}`, data);
+  updateInspection(id: number) {
+    const data = {
+      studentId: this.formDataInscriptionPost.StudentId,
+      subjectName: this.formDataInscriptionPost.SubjectName
+    }
+      return this.http.put(this.APIUrl+`/Inscriptions/${id}`,data);
   }
 
   getSubjectById(subjectId: number): Observable<SubjectModel> {
@@ -60,7 +65,11 @@ export class AppService {
   }
 
   postInscription() {
-    return this.http.post(this.APIUrl + '/inscription', this.formDataInscription);
+    const data = {
+      studentId: this.formDataInscriptionPost.StudentId,
+      subjectName: this.formDataInscriptionPost.SubjectName
+    };
+    return this.http.post(this.APIUrl+'/Inscriptions',data);
   }
 
   getInspectionListInscriptions(): Observable<any[]> {
@@ -72,7 +81,7 @@ export class AppService {
     return this.http.post(this.APIUrl + '/subjects', this.formDataSubject);
   }
 
-  getInspectionById(id: number | string): Observable<any> {
+  getInscriptionForId(id: number | string): Observable<any> {
     return this.http.get<any>(`${this.inscriptionAPIUrl}/details/${id}`);
   }
 }

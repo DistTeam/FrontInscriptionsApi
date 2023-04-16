@@ -57,8 +57,8 @@
         <td style="font-size: 1rem;">{{item.subjectName}}</td>
         <td style="font-size: 1rem;">{{item.incriptionDate}}</td>
         <td class="col-md text-center">
-          <button [routerLinkActive]="['link-active']" routerLink="/edit-inscription" type="submit"
-                  class="btn btn-primary mx-3" style="vertical-align: middle;">Editar
+          <button (click)="populateForm(item)" [routerLink]="['/edit-inscriptions/', item.incriptionId]"  type="submit"
+                  class="btn btn-primary" style="vertical-align: middle;">Editar
           </button>
         </td>
       </tr>

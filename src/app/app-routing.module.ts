@@ -26,6 +26,7 @@ const routes: Routes = [
   {path: 'home-component', component: HomeComponent},
   { path: 'edit-subject/:id', component: FormEditSubjectComponent },
   { path: 'details-student/:id', component: DetailsSudentComponent},
+  { path: 'edit-inscriptions/:id', component: FormEditInscriptionsComponent },
 ];
 @NgModule({
   declarations: [],
