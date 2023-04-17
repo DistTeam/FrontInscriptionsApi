@@ -11,8 +11,8 @@ import {InscriptionForPost} from "./inscriptions/InscriptionForPost";
   providedIn: 'root'
 })
 export class AppService {
-  readonly APIUrl = "https://localhost:7243/api"
-  readonly inscriptionAPIUrl = "https://localhost:7243/api/Inscriptions"
+  readonly APIUrl = "https://inscriptions.azurewebsites.net/api";
+  readonly inscriptionAPIUrl = "https://inscriptions.azurewebsites.net/api/Inscriptions";
 
   constructor(private http: HttpClient) {
   }

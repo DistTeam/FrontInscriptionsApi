@@ -5,6 +5,8 @@ import {InscriptionForPost} from "../InscriptionForPost";
 import {ToastrService} from "ngx-toastr";
 import {ActivatedRoute} from "@angular/router";
 import {NgForm} from "@angular/forms";
+import {InscriptionsModel} from "../InscriptionsModel";
+import {StudentModel} from "../../Students/student.model";
 
 @Component({
   selector: 'app-form-edit-inscriptions',
@@ -59,6 +61,8 @@ export class FormEditInscriptionsComponent {
 
   resetForm(form: NgForm) {
     form.form.reset();
+    this.service.formDataStudent = new StudentModel();
     this.service.formDataInscriptionPost = new InscriptionForPost();
+    this.service.formDataInscription = new InscriptionsModel();
   }
 }

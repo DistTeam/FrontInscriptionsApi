@@ -7,7 +7,7 @@ import { map, Observable } from 'rxjs';
 })
 export class StudentsService {
 
-  private baseUrl = 'https://localhost:7243/api/Students';
+  private baseUrl = 'https://inscriptions.azurewebsites.net/api/Students';
 
   constructor(private http: HttpClient) { }
 

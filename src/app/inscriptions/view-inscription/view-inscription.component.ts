@@ -3,7 +3,7 @@ import {Observable} from "rxjs";
 import {AppService} from "../../service-app.service";
 import * as XLSX from 'xlsx';
 import { FileSaverService } from 'ngx-filesaver';
-import {InscriptionServiceService} from "./inscription.service.service";
+import {InscriptionService} from "./Inscription.service";
 import {StudentModel} from "../../Students/student.model";
 
 @Component({
@@ -182,7 +182,7 @@ this.sortBy(dateInscription)
   private getMaxPage(): number {
     return (this.tamanio/this.pageSize);
   }
-  constructor(private serviceIncriptions:InscriptionServiceService, private fileSaverService: FileSaverService , public service:AppService) {
+  constructor(private serviceIncriptions:InscriptionService, private fileSaverService: FileSaverService , public service:AppService) {
   }
   ngOnInit(): void {
     this.getInscription(1, 10, "asc", "", "");
