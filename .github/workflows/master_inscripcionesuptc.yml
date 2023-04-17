@@ -51,4 +51,4 @@ jobs:
         with:
           app-name: 'inscripcionesUPTC'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_428157F46BD444028BFB25A05970FF48 }}
-          package: ./dist/inscripcionesUptc
+          package: .
