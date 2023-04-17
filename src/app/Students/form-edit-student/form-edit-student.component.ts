@@ -76,7 +76,7 @@ export class FormEditStudentComponent {
   }
 
   editStudent(form: NgForm) {
-    if (this.imageUrl != null && this.imageFile != null && this.service.formDataStudent.studentPhoto.includes("https://almacenamientoproyecto.blob.core.windows.net") == false) {
+    if (this.imageUrl != null && this.imageFile != null) {
       this.service.formDataStudent.studentPhoto = this.imageUrl;
       console.log(this.service.formDataStudent);
       this.service.uploadImg(this.imageFile).subscribe(
@@ -99,18 +99,7 @@ export class FormEditStudentComponent {
           this.toastr.error(err.toString());
         }
       );
-    } else if(this.service.formDataStudent.studentPhoto.includes("https://almacenamientoproyecto.blob.core.windows.net") == true){
-      this.service.putStudent().subscribe(
-        (res: any) => {
-          this.toastr.success('Estudiante actualizado con exito', 'Inscripciones UPTC');
-          this.resetForm(form);
-        },
-        (err: any) => {
-          this.toastr.error(err);
-        }
-      );
-    }
-    else{
+    } else {
       this.service.formDataStudent.studentPhoto = "NULL";
       this.service.putStudent().subscribe(
         (res: any) => {
