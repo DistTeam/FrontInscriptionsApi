@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./subject.component.css']
 })
 export class SubjectComponent {
-
+  imgWidth = '100%';
 }
 
 

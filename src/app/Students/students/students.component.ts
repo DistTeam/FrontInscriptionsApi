@@ -1,5 +1,5 @@
 import {HttpClient} from '@angular/common/http';
-import {Component, Inject, Injectable, OnInit, ViewChild} from '@angular/core';
+import {Component, Inject, Injectable, OnInit, ViewChild, HostListener} from '@angular/core';
 import {StudentsService} from './students.service';
 import {AppService} from "../../service-app.service";
 import {StudentModel} from "../student.model";
@@ -12,6 +12,7 @@ import { MatMenuTrigger } from '@angular/material/menu';
 })
 
 export class StudentsComponent implements OnInit {
+  imgWidth = '30%';
   @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
   public nombre = "Jorge Martinez ";
   public array: any[] = [];
@@ -24,7 +25,10 @@ export class StudentsComponent implements OnInit {
   currentNameFilter: string = "";
   tamanio: number = 0;
 
-
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.imgWidth = (event.target.innerWidth <= 768) ? '100%' : '50%'; // Cambia las dimensiones de la imagen dependiendo del ancho de la ventana del navegador
+  }
   myFunctionName(sort:string):void{
     this.sortBy(sort);
     this.changeIconName();
