@@ -101,7 +101,7 @@ export class ShowInspectionComponent implements OnInit{
     };
 
   getSubjects(sortBy: string, sortOrder: string, page: number , pageSize: number): void {
-    this.showSubjectService.getSubjects(sortBy, sortOrder, page, pageSize).subscribe(response => {
+    this.showSubjectService.getSubjects(sortBy, sortOrder, page, pageSize).subscribe((response: any) => {
       // @ts-ignore
       this.array = response.body.items
       console.log(this.array)

@@ -62,13 +62,13 @@ export class FormEditStudentComponent {
 
   getStudent(id: number): void {
     this.service.getStudentId(id).subscribe(
-      res => {
+      (res: any) => {
         this.student = res;
         console.log(res);
         this.imageUrl = this.service.formDataStudent.studentPhoto;
         this.toastr.success("Estudiante cargado", "Inscripciones UPTC");
       },
-      err => {
+      (err: any) => {
         this.toastr.error(err);
         console.log(err);
       }

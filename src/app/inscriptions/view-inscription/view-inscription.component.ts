@@ -1,9 +1,8 @@
-import { Component } from '@angular/core';
-import {Observable} from "rxjs";
+import {Component} from '@angular/core';
 import {AppService} from "../../service-app.service";
 import * as XLSX from 'xlsx';
-import { FileSaverService } from 'ngx-filesaver';
-import {InscriptionService} from "./Inscription.service";
+import {FileSaverService} from 'ngx-filesaver';
+import {InscriptionService} from "./inscription.service";
 import {StudentModel} from "../../Students/student.model";
 
 @Component({
@@ -20,29 +19,33 @@ export class ViewInscriptionComponent {
     const blob = new Blob([buffer], {type: 'application/octet-stream'});
     this.fileSaverService.save(blob, fileName);
   }
+
   public array: any[] = [];
   pageSize: number = 10;
   backPage: number = 0;
   currentPage: number = 1;
   netxPage: number = 2;
-    currentSortOrder: string = "asc";
+  currentSortOrder: string = "asc";
   curreentSortBy: string = "desc";
   currentNameFilter: string = "";
   tamanio: number = 0;
-  myFunctionName(studentLn:string):void{
+
+  myFunctionName(studentLn: string): void {
     this.sortBy(studentLn);
     this.changeIconName();
   }
+
   iconName = 'keyboard_arrow_down';
-  clickedName : boolean = true;
+  clickedName: boolean = true;
+
   changeIconName() {
-    if(this.clickedName==true){
+    if (this.clickedName == true) {
       this.iconSub = 'keyboard_arrow_down'
       this.iconName = 'keyboard_arrow_up'
       this.iconDate = 'keyboard_arrow_down'
       this.iconId = 'keyboard_arrow_down'
       this.clickedName = false
-    }else {
+    } else {
       this.clickedName = true
       this.iconName = 'keyboard_arrow_down'
       this.iconDate = 'keyboard_arrow_down'
@@ -50,20 +53,23 @@ export class ViewInscriptionComponent {
       this.iconSub = 'keyboard_arrow_down'
     }
   }
-  myFunctionSub(studentLn:string):void{
+
+  myFunctionSub(studentLn: string): void {
     this.sortBy(studentLn);
     this.changeIconLn();
   }
+
   iconSub = 'keyboard_arrow_down';
-  clickedSub : boolean = true;
+  clickedSub: boolean = true;
+
   changeIconLn() {
-    if(this.clickedSub==true){
+    if (this.clickedSub == true) {
       this.iconSub = 'keyboard_arrow_up'
       this.iconName = 'keyboard_arrow_down'
       this.iconId = 'keyboard_arrow_down'
       this.iconDate = 'keyboard_arrow_down'
       this.clickedSub = false
-    }else {
+    } else {
       this.clickedSub = true
       this.iconSub = 'keyboard_arrow_down'
       this.iconDate = 'keyboard_arrow_down'
@@ -72,24 +78,28 @@ export class ViewInscriptionComponent {
       this.iconSub = 'keyboard_arrow_down'
     }
   }
-  myFunctionId(studentId:string):void{
+
+  myFunctionId(studentId: string): void {
     this.sortBy(studentId);
     this.changeIconId();
   }
+
   iconDate = 'keyboard_arrow_down';
-  clickedDate : boolean = true;
+  clickedDate: boolean = true;
+
   myFunctionDate(dateInscription: string) {
-this.sortBy(dateInscription)
+    this.sortBy(dateInscription)
     this.changeIconDate();
   }
+
   changeIconDate() {
-    if(this.clickedId==true){
+    if (this.clickedId == true) {
       this.iconSub = 'keyboard_arrow_down'
       this.iconName = 'keyboard_arrow_down'
       this.iconId = 'keyboard_arrow_down'
       this.iconDate = 'keyboard_arrow_up'
       this.clickedId = false
-    }else {
+    } else {
       this.clickedId = true
       this.iconDate = 'keyboard_arrow_down'
       this.iconId = 'keyboard_arrow_down'
@@ -98,16 +108,18 @@ this.sortBy(dateInscription)
       this.iconSub = 'keyboard_arrow_down'
     }
   }
+
   iconId = 'keyboard_arrow_down';
-  clickedId : boolean = true;
+  clickedId: boolean = true;
+
   changeIconId() {
-    if(this.clickedId==true){
+    if (this.clickedId == true) {
       this.iconSub = 'keyboard_arrow_down'
       this.iconName = 'keyboard_arrow_down'
       this.iconId = 'keyboard_arrow_up'
       this.iconDate = 'keyboard_arrow_down'
       this.clickedId = false
-    }else {
+    } else {
       this.clickedId = true
       this.iconId = 'keyboard_arrow_down'
       this.iconName = 'keyboard_arrow_down'
@@ -116,9 +128,11 @@ this.sortBy(dateInscription)
       this.iconDate = 'keyboard_arrow_down'
     }
   }
+
   populateForm(selectedRecord: StudentModel) {
     this.service.formDataStudent = Object.assign({}, selectedRecord);
   }
+
   public getNextPage() {
     if (this.currentPage < 19000) {//getMaxPage
       this.getInscription(this.currentPage = this.currentPage + 1, this.pageSize, this.currentSortOrder, this.curreentSortBy, this.currentNameFilter);
@@ -149,8 +163,7 @@ this.sortBy(dateInscription)
         this.currentPage = this.currentPage + 1;
         this.actualiceButtons();
       }
-    }
-    else {
+    } else {
       if (this.backPage > 0) {
         this.getInscription(this.backPage, this.pageSize, this.currentSortOrder, this.curreentSortBy, this.currentNameFilter);
         this.currentPage = this.currentPage - 1;
@@ -159,10 +172,10 @@ this.sortBy(dateInscription)
     }
   }
 
-  public sortBy(sortBy:string) {
+  public sortBy(sortBy: string) {
     if (this.currentSortOrder === "asc") {
       this.currentSortOrder = "desc";
-    } else if (this.currentSortOrder === "desc"){
+    } else if (this.currentSortOrder === "desc") {
       this.currentSortOrder = "asc";
     }
     this.curreentSortBy = sortBy;
@@ -180,17 +193,19 @@ this.sortBy(dateInscription)
   }
 
   private getMaxPage(): number {
-    return (this.tamanio/this.pageSize);
+    return (this.tamanio / this.pageSize);
   }
-  constructor(private serviceIncriptions:InscriptionService, private fileSaverService: FileSaverService , public service:AppService) {
+
+  constructor(private serviceIncriptions: InscriptionService, private fileSaverService: FileSaverService, public service: AppService) {
   }
+
   ngOnInit(): void {
     this.getInscription(1, 10, "asc", "", "");
   }
 
   getInscription(pageNumber: number, pageSize: number, sortOrder: string, sortBy: string, searchString: string): void {
-    console.log("entro"  + " " + pageSize  + " " + sortOrder  + " " + sortBy + searchString)
-    this.serviceIncriptions.getInscriptions(pageNumber, pageSize, sortOrder, sortBy, searchString).subscribe(response => {
+    console.log("entro" + " " + pageSize + " " + sortOrder + " " + sortBy + searchString)
+    this.serviceIncriptions.getInscriptions(pageNumber, pageSize, sortOrder, sortBy, searchString).subscribe((response: any) => {
       this.array = response.body;
       const tamInscriptions = response.headers.get("tamanio-inscriptions");
       this.tamanio = tamInscriptions;

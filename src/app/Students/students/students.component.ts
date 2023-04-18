@@ -164,7 +164,7 @@ export class StudentsComponent implements OnInit {
   }
 
   getStudents(pageNumber: number, pageSize: number, sortOrder: string, sortBy: string, searchString: string): void {
-    this.studentsService.getStudents(pageNumber, pageSize, sortOrder, sortBy, searchString).subscribe(response => {
+    this.studentsService.getStudents(pageNumber, pageSize, sortOrder, sortBy, searchString).subscribe((response: any) => {
       // @ts-ignore
       this.array = response.body;
       console.log(this.array);
