@@ -20,12 +20,17 @@ steps:
     npm install
     ng build --configuration=production
   displayName: 'npm install and build'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
+
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'AzureRM'
     azureSubscription: 'Azure for Students(ff90a76b-91c3-4aea-b3ce-2b5a4a7e84b1)'
     appType: 'webAppLinux'
     WebAppName: 'inscriptionsUptc'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
-
-- task: PublishBuildArtifacts@1
+    packageForLinux: '$(Build.ArtifactStagingDirectory)/*.zip'
