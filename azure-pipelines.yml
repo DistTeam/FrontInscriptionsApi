@@ -28,4 +28,4 @@ steps:
     appType: 'webAppLinux'
     WebAppName: 'inscripcionesUPTC'
     packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
-    RuntimeStack: 'NODE|16-lts'
+    RuntimeStack: 'NODE|14-lts'
