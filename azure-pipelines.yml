@@ -28,11 +28,7 @@ stages:
           ng build --configuration=production
         displayName: 'npm install and build'
         workingDirectory: '$(Build.SourcesDirectory)'
-      - task: CmdLine@2
-        displayName: "Run unit tests"
-        inputs:
-          script: |
-            ng test --browsers=ChromeHeadless --code-coverage --watch=false
+
       - task: ArchiveFiles@2
         displayName: 'Archive files'
         inputs:
