@@ -27,3 +27,5 @@ steps:
     appType: 'webAppLinux'
     WebAppName: 'inscriptionsUptc'
     packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+
+- task: PublishBuildArtifacts@1
