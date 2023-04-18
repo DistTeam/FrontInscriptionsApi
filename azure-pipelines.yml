@@ -21,10 +21,10 @@ steps:
     ng build --configuration=production
   displayName: 'npm install and build'
 
-- task: PublishBuildArtifacts@1
+- task: PublishBuildArtifacts@1    
+  displayName: 'Publish Artifact: drop'
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'Artifact'
+    PathtoPublish: '$(build.artifactstagingdirectory)'
 
 - task: AzureRmWebAppDeployment@4
   inputs:
