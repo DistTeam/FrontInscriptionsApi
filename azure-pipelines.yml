@@ -27,7 +27,7 @@ stages:
           npm install
           ng build --configuration=production
         displayName: 'npm install and build'
-        workingDirectory: '$(Build.SourcesDirectory)'
+        workingDirectory: '$(Build.SourcesDirectory)' 
 
       - task: ArchiveFiles@2
         displayName: 'Archive files'
