@@ -32,12 +32,11 @@ stages:
         displayName: "Run unit tests"
         inputs:
           script: |
-            cd AngularWithAzure/
             ng test --browsers=ChromeHeadless --code-coverage --watch=false
       - task: ArchiveFiles@2
         displayName: 'Archive files'
         inputs:
-          rootFolderOrFile: '$(System.DefaultWorkingDirectory)/dist/angular-with-azure/'
+          rootFolderOrFile: '$(System.DefaultWorkingDirectory)/dist/FrontInscriptionsApi/'
           includeRootFolder: false
           archiveType: zip
           archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
