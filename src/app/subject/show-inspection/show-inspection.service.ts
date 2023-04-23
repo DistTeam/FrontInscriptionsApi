@@ -7,7 +7,7 @@ import { map, Observable } from 'rxjs';
 })
 export class ShowInspectionService {
 
-  private baseUrl = 'https://inscriptions.azurewebsites.net/api/Subjects';
+  private baseUrl = '104.210.221.168/api/Subjects';
 
   constructor(private http: HttpClient) { }
 

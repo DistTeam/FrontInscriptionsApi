@@ -6,7 +6,8 @@ import {Observable} from "rxjs";
   providedIn: 'root'
 })
 export class InscriptionService {
-  private baseUrlInscriptionsGetAll = 'https://inscriptions.azurewebsites.net/api/Inscriptions';
+  private baseUrlInscriptionsGetAll = '104.210.221.168/api/Inscriptions';
+
   constructor(private http: HttpClient) { }
   getInscriptions(pageNumber: number = 50, pageSize: number = 10, sortOrder: string = "asc", sortBy: string = "", searchString: string = ""): Observable<any> {
     console.log("entro"  + " page " + pageSize  + " como " + sortOrder  + " por " + sortBy + " dsearch " +searchString)

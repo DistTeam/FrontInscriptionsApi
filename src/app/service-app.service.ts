@@ -11,8 +11,7 @@ import {InscriptionForPost} from "./inscriptions/InscriptionForPost";
   providedIn: 'root'
 })
 export class AppService {
-  readonly APIUrl = "https://inscriptions.azurewebsites.net/api";
-  readonly inscriptionAPIUrl = "https://inscriptions.azurewebsites.net/api/Inscriptions";
+  readonly APIUrl = "104.210.221.168/api";
 
   constructor(private http: HttpClient) {
   }
@@ -73,7 +72,7 @@ export class AppService {
   }
 
   getInspectionListInscriptions(): Observable<any[]> {
-    return this.http.get<any>(this.inscriptionAPIUrl + '/all');
+    return this.http.get<any>(this.APIUrl+'/inscriptions/all');
 
   }
 
@@ -82,6 +81,6 @@ export class AppService {
   }
 
   getInscriptionForId(id: number | string): Observable<any> {
-    return this.http.get<any>(`${this.inscriptionAPIUrl}/details/${id}`);
+    return this.http.get<any>(`${this.APIUrl}/inscriptions/details/${id}`);
   }
 }
