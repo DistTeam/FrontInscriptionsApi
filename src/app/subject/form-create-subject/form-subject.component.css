@@ -3,7 +3,7 @@ label[for]:after {
     color: red;
   }
 #title{
-  background-color: lightblue;
+  background-color: aliceblue;
 
 }
 @media (max-width: 100px) {
