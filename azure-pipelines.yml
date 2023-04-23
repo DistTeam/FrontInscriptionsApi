@@ -81,6 +81,7 @@ stages:
         inputs:
           testResultsFormat: 'JUnit'
           testResultsFiles: '$(System.DefaultWorkingDirectory)/test-results.xml'
+          mergeTestResults: true
         condition: always()
 
 - stage: Production
@@ -102,4 +103,5 @@ stages:
               inputs:
                 testResultsFormat: 'JUnit'
                 testResultsFiles: '$(System.DefaultWorkingDirectory)/test-results.xml'
+                mergeTestResults: true
               condition: always()
