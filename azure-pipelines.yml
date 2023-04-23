@@ -1,3 +1,4 @@
+# Node.js with Angular
 # Build a Node.js project that uses Angular.
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
@@ -66,23 +67,14 @@ stages:
               package: '$(Pipeline.Workspace)/drop/$(Build.BuildId).zip'
               runtimeStack: 'NODE|16-lts'
 
-
 - stage: Acceptance
   dependsOn: [ Development ]
   displayName: 'Deploy to Acceptance'
   jobs:
-    - job: DeployToAcceptance
+    - job:  DeployToAcceptance
       displayName: 'DeployAcceptance'
       steps:
       - script: echo Deploying to Acceptance
-        displayName: 'Validate deployment'
-      - task: PublishTestResults@2
-        displayName: 'Publish test results'
-        inputs:
-          testResultsFormat: 'JUnit'
-          testResultsFiles: '$(System.DefaultWorkingDirectory)/test-results.xml'
-        condition: always()
-
 - stage: Production
   dependsOn: [ Acceptance ]
   displayName: 'Deploy to Production'
@@ -96,10 +88,3 @@ stages:
           deploy:
             steps:
             - script: echo Deploying to Production
-              displayName: 'Validate deployment'
-            - task: PublishTestResults@2
-              displayName: 'Publish test results'
-              inputs:
-                testResultsFormat: 'JUnit'
-                testResultsFiles: '$(System.DefaultWorkingDirectory)/test-results.xml'
-              condition: always()
