@@ -4,14 +4,13 @@ import {Observable} from 'rxjs';
 import {StudentModel} from "./Students/student.model";
 import {InscriptionsModel} from "./inscriptions/InscriptionsModel";
 import {SubjectModel} from "./subject/subject.model";
-import {map} from 'rxjs/operators';
 import {InscriptionForPost} from "./inscriptions/InscriptionForPost";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppService {
-  readonly APIUrl = "http://104.210.221.168/api";
+  readonly APIUrl = "/api";
 
   constructor(private http: HttpClient) {
   }
