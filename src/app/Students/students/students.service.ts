@@ -7,7 +7,7 @@ import { map, Observable } from 'rxjs';
 })
 export class StudentsService {
 
-  private baseUrl = '104.210.221.168/api/Students';
+  private baseUrl = 'http://104.210.221.168/api/Students';
 
   constructor(private http: HttpClient) { }
 

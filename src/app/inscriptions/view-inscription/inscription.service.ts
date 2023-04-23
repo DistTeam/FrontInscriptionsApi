@@ -6,7 +6,7 @@ import {Observable} from "rxjs";
   providedIn: 'root'
 })
 export class InscriptionService {
-  private baseUrlInscriptionsGetAll = '104.210.221.168/api/Inscriptions';
+  private baseUrlInscriptionsGetAll = 'http://104.210.221.168/api/Inscriptions';
 
   constructor(private http: HttpClient) { }
   getInscriptions(pageNumber: number = 50, pageSize: number = 10, sortOrder: string = "asc", sortBy: string = "", searchString: string = ""): Observable<any> {

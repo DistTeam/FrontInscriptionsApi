@@ -11,7 +11,7 @@ import {InscriptionForPost} from "./inscriptions/InscriptionForPost";
   providedIn: 'root'
 })
 export class AppService {
-  readonly APIUrl = "104.210.221.168/api";
+  readonly APIUrl = "http://104.210.221.168/api";
 
   constructor(private http: HttpClient) {
   }

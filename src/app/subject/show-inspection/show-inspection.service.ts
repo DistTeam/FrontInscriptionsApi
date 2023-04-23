@@ -7,7 +7,7 @@ import { map, Observable } from 'rxjs';
 })
 export class ShowInspectionService {
 
-  private baseUrl = '104.210.221.168/api/Subjects';
+  private baseUrl = 'http://104.210.221.168/api/Subjects';
 
   constructor(private http: HttpClient) { }
 
