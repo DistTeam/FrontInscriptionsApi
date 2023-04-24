@@ -10,7 +10,7 @@ import {InscriptionForPost} from "./inscriptions/InscriptionForPost";
   providedIn: 'root'
 })
 export class AppService {
-  readonly APIUrl = "/api";
+  readonly APIUrl = "https://inscriptionsapiuptc.azurewebsites.net/api";
 
   constructor(private http: HttpClient) {
   }

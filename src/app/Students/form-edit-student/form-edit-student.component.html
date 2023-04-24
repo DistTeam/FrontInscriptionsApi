@@ -96,7 +96,7 @@
             <i class="fas fa-cloud-upload-alt fa-3x mb-3"></i>
             <p class="mb-0" *ngIf="!imageUrl">Drop image here or click to upload</p>
             <div class="preview-container my-3" *ngIf="imageUrl">
-              <img [src]="sanitizer.bypassSecurityTrustUrl(imageUrl)" [(ngModel)]="service.formDataStudent.studentPhoto" alt="Uploaded Image" class="preview-image rounded">
+              <img style="height: 25rem;width: 25rem" [src]="sanitizer.bypassSecurityTrustUrl(imageUrl)" [(ngModel)]="service.formDataStudent.studentPhoto" alt="Uploaded Image" class="preview-image rounded">
             </div>
             <a>{{imageUrl}}</a>
           </div>
