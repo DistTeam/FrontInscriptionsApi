@@ -3,6 +3,6 @@
     "changeOrigin": true,
     "loglevel": "debug",
     "secure": false,
-    "target": "http://104.210.221.168"
+    "target": "http://40.88.131.190"
   }
 }
