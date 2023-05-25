@@ -29,6 +29,8 @@ import {StudentsComponent} from "./Students/students/students.component";
 import {DetailsSudentComponent} from "./Students/details-sudent/details-sudent.component";
 import {LogingComponent} from "./loging/loging.component";
 import {RegisterComponent} from "./register/register.component";
+import {Menu} from "@angular/cdk/menu";
+import {MenuComponent} from "./menu/menu.component";
 
 
 @NgModule({
@@ -47,7 +49,8 @@ import {RegisterComponent} from "./register/register.component";
     StudentsComponent,
     DetailsSudentComponent,
     RegisterComponent,
-    LogingComponent
+    LogingComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
