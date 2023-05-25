@@ -30,11 +30,11 @@ export class CreateInscriptionsComponent  implements OnInit{
 
   addInscription(form: NgForm) {
     this.service.postInscription().subscribe(
-      res => {
+      (res: any) => {
         this.toastr.success('Agregado con exito', 'Inscripciones UPTC');
         this.resetForm(form);
       },
-      err => {
+      (err: any) => {
         this.toastr.error(err);
       }
     );

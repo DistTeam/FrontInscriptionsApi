@@ -4,15 +4,13 @@ import {Observable} from 'rxjs';
 import {StudentModel} from "./Students/student.model";
 import {InscriptionsModel} from "./inscriptions/InscriptionsModel";
 import {SubjectModel} from "./subject/subject.model";
-import {map} from 'rxjs/operators';
 import {InscriptionForPost} from "./inscriptions/InscriptionForPost";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppService {
-  readonly APIUrl = "https://inscriptions.azurewebsites.net/api";
-  readonly inscriptionAPIUrl = "https://inscriptions.azurewebsites.net/api/Inscriptions";
+  readonly APIUrl = "https://inscriptionsapiuptc.azurewebsites.net/api";
 
   constructor(private http: HttpClient) {
   }
@@ -73,7 +71,7 @@ export class AppService {
   }
 
   getInspectionListInscriptions(): Observable<any[]> {
-    return this.http.get<any>(this.inscriptionAPIUrl + '/all');
+    return this.http.get<any>(this.APIUrl+'/inscriptions/all');
 
   }
 
@@ -82,6 +80,6 @@ export class AppService {
   }
 
   getInscriptionForId(id: number | string): Observable<any> {
-    return this.http.get<any>(`${this.inscriptionAPIUrl}/details/${id}`);
+    return this.http.get<any>(`${this.APIUrl}/inscriptions/details/${id}`);
   }
 }

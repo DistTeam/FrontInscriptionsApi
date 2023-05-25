@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
-import { map, Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ShowInspectionService {
 
-  private baseUrl = 'https://inscriptions.azurewebsites.net/api/Subjects';
+  private baseUrl: string | null = 'https://inscriptionssubjectapi.azurewebsites.net/api/Subjects';
 
   constructor(private http: HttpClient) { }
 

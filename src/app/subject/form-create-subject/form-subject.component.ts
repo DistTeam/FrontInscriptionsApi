@@ -17,11 +17,11 @@ export class FormSubjectComponent {
 
   addSubject(form: NgForm) {
     this.service.postSubject().subscribe(
-      res => {
+      (res: any) => {
         this.toastr.success('Materia agregada con exito', 'Inscripciones UPTC');
         this.resetForm(form);
       },
-      err => {
+      (err: any) => {
         this.toastr.error(err);
       }
     );

@@ -33,14 +33,14 @@ export class FormEditInscriptionsComponent {
   }
   getInscription(id: number): void {
     this.service.getInscriptionForId(id).subscribe(
-      res => {
+      (res: any) => {
         this.inscription = res;
         this.service.formDataInscriptionPost.StudentId = res.studentId;
         this.service.formDataInscriptionPost.SubjectName = res.subjectName;
         console.log("DFJEJF" +res.toString());
         this.toastr.success("Inscripcion cargada", "Inscripciones UPTC");
       },
-      err => {
+      (err: any) => {
         this.toastr.error(err);
         console.log(err);
       }

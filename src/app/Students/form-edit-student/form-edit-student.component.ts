@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {StudentModel} from "../student.model";
 import {ToastrService} from "ngx-toastr";
 import {AppService} from "../../service-app.service";
@@ -62,13 +62,13 @@ export class FormEditStudentComponent {
 
   getStudent(id: number): void {
     this.service.getStudentId(id).subscribe(
-      res => {
+      (res: any) => {
         this.student = res;
         console.log(res);
         this.imageUrl = this.service.formDataStudent.studentPhoto;
         this.toastr.success("Estudiante cargado", "Inscripciones UPTC");
       },
-      err => {
+      (err: any) => {
         this.toastr.error(err);
         console.log(err);
       }
@@ -76,42 +76,33 @@ export class FormEditStudentComponent {
   }
 
   editStudent(form: NgForm) {
-    if (this.imageUrl != null && this.imageFile != null && this.service.formDataStudent.studentPhoto.includes("https://almacenamientoproyecto.blob.core.windows.net") == false) {
-      this.service.formDataStudent.studentPhoto = this.imageUrl;
-      console.log(this.service.formDataStudent);
-      this.service.uploadImg(this.imageFile).subscribe(
-        (res: any) => { // actualización del tipo de dato de la respuesta
-          this.toastr.success('Imagen subida con exito', 'Inscripciones UPTC');
-          const imageUrl = res.blobUrl;
-          this.service.formDataStudent.studentPhoto = imageUrl.toString();
-          console.log(this.service.formDataStudent);
-          this.service.putStudent().subscribe(
-            (res: any) => {
-              this.toastr.success('Estudiante actualizado con exito', 'Inscripciones UPTC');
-              this.resetForm(form);
-            },
-            (err: any) => {
-              this.toastr.error(err.toString());
-            }
-          );
-        },
-        (err: any) => {
-          this.toastr.error(err.toString());
-        }
-      );
-    } else if(this.service.formDataStudent.studentPhoto.includes("https://almacenamientoproyecto.blob.core.windows.net") == true){
-      this.service.putStudent().subscribe(
-        (res: any) => {
-          this.toastr.success('Estudiante actualizado con exito', 'Inscripciones UPTC');
-          this.resetForm(form);
-        },
-        (err: any) => {
-          this.toastr.error(err);
-        }
-      );
-    }
-    else{
-      this.service.formDataStudent.studentPhoto = "NULL";
+    if (!this.imageUrl?.includes("https://almacenamientoproyectos.blob.core.windows.net")) {
+      if (this.imageUrl != null && this.imageFile != null) {
+        this.service.formDataStudent.studentPhoto = this.imageUrl;
+        console.log(this.service.formDataStudent);
+        this.service.uploadImg(this.imageFile).subscribe(
+          (res: any) => { // actualización del tipo de dato de la respuesta
+            this.toastr.success('Imagen subida con exito', 'Inscripciones UPTC');
+            const imageUrl = res.blobUrl;
+            this.service.formDataStudent.studentPhoto = imageUrl.toString();
+            console.log(this.service.formDataStudent);
+            this.service.putStudent().subscribe(
+              (res: any) => {
+                this.toastr.success('Estudiante actualizado con exito', 'Inscripciones UPTC');
+                this.resetForm(form);
+              },
+              (err: any) => {
+                this.toastr.error(err.toString());
+              }
+            );
+          },
+          (err: any) => {
+            this.toastr.error(err.toString());
+          }
+        );
+      }
+    } else {
+      if (!this.imageUrl?.includes("https://almacenamientoproyectos.blob.core.windows.net")) this.service.formDataStudent.studentPhoto = "NULL";
       this.service.putStudent().subscribe(
         (res: any) => {
           this.toastr.success('Estudiante actualizado con exito', 'Inscripciones UPTC');

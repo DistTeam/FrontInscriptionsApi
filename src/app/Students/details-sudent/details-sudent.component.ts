@@ -30,12 +30,12 @@ export class DetailsSudentComponent {
 
   getStudent(id: number): void {
     this.service.getStudentId(id).subscribe(
-      res => {
+      (res: any) => {
         this.student = res;
         console.log(res);
         this.toastr.success("Estudiante cargado", "Inscripciones UPTC");
       },
-      err => {
+      (err: any) => {
         this.toastr.error(err);
         console.log(err);
       }

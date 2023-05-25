@@ -30,11 +30,11 @@ export class FormEditSubjectComponent implements OnInit {
 
   getSubject(id: number): void {
     this.service.getSubjectById(id).subscribe(
-      res => {
+      (res: any) => {
         this.subject = res;
         this.toastr.success("Materia cargada", "Inscripciones UPTC");
       },
-      err => {
+      (err: any) => {
         this.toastr.error(err);
         console.log(err);
       }
