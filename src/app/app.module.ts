@@ -27,6 +27,8 @@ import {FormEditInscriptionsComponent} from "./inscriptions/form-edit-inscriptio
 import {ToastrModule} from "ngx-toastr";
 import {StudentsComponent} from "./Students/students/students.component";
 import {DetailsSudentComponent} from "./Students/details-sudent/details-sudent.component";
+import {LogingComponent} from "./loging/loging.component";
+import {RegisterComponent} from "./register/register.component";
 
 
 @NgModule({
@@ -43,7 +45,9 @@ import {DetailsSudentComponent} from "./Students/details-sudent/details-sudent.c
     ShowInspectionComponent,
     FormStudentComponent,
     StudentsComponent,
-    DetailsSudentComponent
+    DetailsSudentComponent,
+    RegisterComponent,
+    LogingComponent
   ],
   imports: [
     BrowserModule,
