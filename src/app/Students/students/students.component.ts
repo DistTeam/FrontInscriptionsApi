@@ -166,12 +166,10 @@ export class StudentsComponent implements OnInit {
   getStudents(pageNumber: number, pageSize: number, sortOrder: string, sortBy: string, searchString: string): void {
     this.studentsService.getStudents(pageNumber, pageSize, sortOrder, sortBy, searchString).subscribe((response: any) => {
       // @ts-ignore
-      this.array = response.body;
-      console.log(this.array);
+      this.array = response.body.$values;
       // @ts-ignore
       const tamstudents = response.headers.get("tamanio");
       this.tamanio = tamstudents;
-      console.log('El valor de tamstudents es: ' + tamstudents);
     });
   }
 

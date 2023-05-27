@@ -5,12 +5,13 @@ import {StudentModel} from "./Students/student.model";
 import {InscriptionsModel} from "./inscriptions/InscriptionsModel";
 import {SubjectModel} from "./subject/subject.model";
 import {InscriptionForPost} from "./inscriptions/InscriptionForPost";
+import {UserModel} from "./loging/UserModel";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppService {
-  readonly APIUrl = "https://inscriptionsapiuptc.azurewebsites.net/api";
+  readonly APIUrl = "https://localhost:7243/api";
 
   constructor(private http: HttpClient) {
   }
@@ -19,6 +20,7 @@ export class AppService {
   formDataSubject: SubjectModel = new SubjectModel();
   formDataInscription: InscriptionsModel = new InscriptionsModel();
   formDataInscriptionPost:InscriptionForPost= new InscriptionForPost();
+  formDataUser:UserModel=new UserModel();
   getInspectionList(): Observable<any[]> {
     return this.http.get<any>(this.APIUrl + '/Subjects');
   }
@@ -33,6 +35,19 @@ export class AppService {
 
   postStudent() {
     return this.http.post(this.APIUrl + '/students/url', this.formDataStudent);
+  }
+
+
+  putUsers() {
+  const key = `${this.formDataUser.user}`;
+  const value = `${this.formDataUser.pasword}`;
+    return this.http.put(`${this.APIUrl}/Redis/${key}`, null, { params: { value }});
+  }
+
+  getLoging() {
+    const key = `${this.formDataUser.user}`;
+    const value = `${this.formDataUser.pasword}`;
+    return this.http.get(`${this.APIUrl}/Users/ObtenerToken/${value}?name=${key}`);
   }
 
   uploadImg(imageFile: File) {
@@ -81,5 +96,9 @@ export class AppService {
 
   getInscriptionForId(id: number | string): Observable<any> {
     return this.http.get<any>(`${this.APIUrl}/inscriptions/details/${id}`);
+  }
+
+  getRedis() {
+    return this.http.get<any>(`${this.APIUrl}/inscriptions/details/`);
   }
 }

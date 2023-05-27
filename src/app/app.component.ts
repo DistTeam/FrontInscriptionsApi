@@ -19,7 +19,7 @@ export class AppComponent {
 
   constructor(private observer: BreakpointObserver, private router: Router) {}
 
-  ngAfterViewInit() {
+  /*ngAfterViewInit() {
     this.observer
       .observe(['(max-width: 800px)'])
       .pipe(delay(1), untilDestroyed(this))
@@ -43,5 +43,5 @@ export class AppComponent {
           this.sidenav.close();
         }
       });
-  }
+  }*/
 }

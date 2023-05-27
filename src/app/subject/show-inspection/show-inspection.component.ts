@@ -103,12 +103,10 @@ export class ShowInspectionComponent implements OnInit{
   getSubjects(sortBy: string, sortOrder: string, page: number , pageSize: number): void {
     this.showSubjectService.getSubjects(sortBy, sortOrder, page, pageSize).subscribe((response: any) => {
       // @ts-ignore
-      this.array = response.body.items
-      console.log(this.array)
+      this.array = response.body.items.$values;
       // @ts-ignore
       const tamsubjects = response.headers.get("tamanio-subjects");
       this.tamanio = tamsubjects;
-      console.log('El valor de tamsubjects es: ' + tamsubjects);
     });
   }
   public getNextPage() {

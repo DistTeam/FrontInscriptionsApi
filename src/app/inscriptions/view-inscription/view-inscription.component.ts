@@ -204,12 +204,10 @@ export class ViewInscriptionComponent {
   }
 
   getInscription(pageNumber: number, pageSize: number, sortOrder: string, sortBy: string, searchString: string): void {
-    console.log("entro" + " " + pageSize + " " + sortOrder + " " + sortBy + searchString)
     this.serviceIncriptions.getInscriptions(pageNumber, pageSize, sortOrder, sortBy, searchString).subscribe((response: any) => {
-      this.array = response.body;
+      this.array = response.body.$values;
       const tamInscriptions = response.headers.get("tamanio-inscriptions");
       this.tamanio = tamInscriptions;
-      console.log('El valor de tamInscriptions es: ' + tamInscriptions);
     });
   }
 }
