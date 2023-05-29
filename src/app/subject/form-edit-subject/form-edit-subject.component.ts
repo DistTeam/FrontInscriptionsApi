@@ -57,5 +57,6 @@ export class FormEditSubjectComponent implements OnInit {
   resetForm(form: NgForm) {
     form.form.reset();
     this.service.formDataSubject = new SubjectModel();
+    window.history.back();
   }
 }

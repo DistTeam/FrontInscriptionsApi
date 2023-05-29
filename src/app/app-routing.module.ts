@@ -12,21 +12,40 @@ import {ViewInscriptionComponent} from "./inscriptions/view-inscription/view-ins
 import {StudentsComponent} from "./Students/students/students.component";
 import { HomeComponent } from './home/home.component';
 import {DetailsSudentComponent} from "./Students/details-sudent/details-sudent.component";
+import {MenuComponent} from "./menu/menu.component";
+import {LogingComponent} from "./loging/loging.component";
 
 const routes: Routes = [
-  { path: 'create-student', component: FormStudentComponent},
-  { path: 'edit-student/:id', component: FormEditStudentComponent },
-  {path:'create-subject',component:FormSubjectComponent},
+  { path: "", component: LogingComponent  },
+  {
+   path: 'home', component: MenuComponent, children:[
+      { path: 'create-student', component: FormStudentComponent},
+      {path:'view-student', component: StudentsComponent },
+      {path:'create-subject',component:FormSubjectComponent },
+      {path:'view-subject',component: ShowInspectionComponent},
+      {path:'create-inscription',component:CreateInscriptionsComponent },
+      {path:'view-inscription',component: ViewInscriptionComponent},
+      ]
+}, {path:'edit-inscription',component: FormEditInscriptionsComponent},
+  { path: 'edit-inscriptions/:id', component: FormEditInscriptionsComponent},
+  {path: 'edit-student/:id', component: FormEditStudentComponent },
   {path:'edit-subject',component: FormEditSubjectComponent},
-  {path:'view-subject',component: ShowInspectionComponent},
-  {path:'create-inscription',component:CreateInscriptionsComponent},
-  {path:'edit-inscription',component: FormEditInscriptionsComponent},
-  {path:'view-inscription',component: ViewInscriptionComponent},
-  {path:'view-student', component: StudentsComponent},
-  {path: 'home-component', component: HomeComponent},
-  { path: 'edit-subject/:id', component: FormEditSubjectComponent },
+  { path: 'edit-subject/:id', component: FormEditSubjectComponent},
   { path: 'details-student/:id', component: DetailsSudentComponent},
-  { path: 'edit-inscriptions/:id', component: FormEditInscriptionsComponent },
+  //{ path: 'home', component: MenuComponent, outlet: 'principal' },
+  //{ path: 'create-student', component: FormStudentComponent, outlet: 'menu' },
+  /*{ path: 'edit-student/:id', component: FormEditStudentComponent, outlet: 'menu'  },
+  {path:'create-subject',component:FormSubjectComponent, outlet: 'menu' },
+  {path:'edit-subject',component: FormEditSubjectComponent, outlet: 'menu' },
+  {path:'view-subject',component: ShowInspectionComponent, outlet: 'menu' },
+  {path:'create-inscription',component:CreateInscriptionsComponent, outlet: 'menu' },
+  {path:'edit-inscription',component: FormEditInscriptionsComponent, outlet: 'menu' },
+  {path:'view-inscription',component: ViewInscriptionComponent, outlet: 'menu' },
+//  {path:'view-student', component: StudentsComponent, outlet: 'menu' },*/
+ // {path: 'home-component', component: HomeComponent},
+ /* { path: 'edit-subject/:id', component: FormEditSubjectComponent, outlet: 'menu'  },
+  { path: 'details-student/:id', component: DetailsSudentComponent, outlet: 'menu' },
+  { path: 'edit-inscriptions/:id', component: FormEditInscriptionsComponent, outlet: 'menu'  },*/
 ];
 @NgModule({
   declarations: [],
