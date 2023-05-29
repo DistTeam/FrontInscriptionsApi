@@ -15,19 +15,25 @@ import {DetailsSudentComponent} from "./Students/details-sudent/details-sudent.c
 import {LogingComponent} from "./loging/loging.component";
 import {MenuComponent} from "./menu/menu.component";
 
+
 const routes: Routes = [
-  { path: 'create-student', component: FormStudentComponent},
-  { path: 'edit-student/:id', component: FormEditStudentComponent },
-  {path:'create-subject',component:FormSubjectComponent},
+  { path: "", component: LogingComponent  },
+  {
+    path: 'home', component: MenuComponent, children:[
+      { path: 'create-student', component: FormStudentComponent},
+      {path:'view-student', component: StudentsComponent },
+      {path:'create-subject',component:FormSubjectComponent },
+      {path:'view-subject',component: ShowInspectionComponent},
+      {path:'create-inscription',component:CreateInscriptionsComponent },
+      {path:'view-inscription',component: ViewInscriptionComponent},
+    ]
+  }, {path:'edit-inscription',component: FormEditInscriptionsComponent},
+  {path: 'edit-inscriptions/:id', component: FormEditInscriptionsComponent},
+  {path: 'edit-student/:id', component: FormEditStudentComponent },
   {path:'edit-subject',component: FormEditSubjectComponent},
-  {path:'view-subject',component: ShowInspectionComponent},
-  {path:'create-inscription',component:CreateInscriptionsComponent},
-  {path:'edit-inscription',component: FormEditInscriptionsComponent},
-  {path:'view-inscription',component: ViewInscriptionComponent},
-  {path:'view-student', component: StudentsComponent},
-  {path: 'home-component', component: HomeComponent},
-  { path: 'edit-subject/:id', component: FormEditSubjectComponent },
+  { path: 'edit-subject/:id', component: FormEditSubjectComponent},
   { path: 'details-student/:id', component: DetailsSudentComponent},
+  { path: 'login', component: LogingComponent},
   //{ path: 'home', component: MenuComponent, outlet: 'principal' },
   //{ path: 'create-student', component: FormStudentComponent, outlet: 'menu' },
   /*{ path: 'edit-student/:id', component: FormEditStudentComponent, outlet: 'menu'  },
@@ -38,10 +44,10 @@ const routes: Routes = [
   {path:'edit-inscription',component: FormEditInscriptionsComponent, outlet: 'menu' },
   {path:'view-inscription',component: ViewInscriptionComponent, outlet: 'menu' },
 //  {path:'view-student', component: StudentsComponent, outlet: 'menu' },*/
- // {path: 'home-component', component: HomeComponent},
- /* { path: 'edit-subject/:id', component: FormEditSubjectComponent, outlet: 'menu'  },
-  { path: 'details-student/:id', component: DetailsSudentComponent, outlet: 'menu' },
-  { path: 'edit-inscriptions/:id', component: FormEditInscriptionsComponent, outlet: 'menu'  },*/
+  // {path: 'home-component', component: HomeComponent},
+  /* { path: 'edit-subject/:id', component: FormEditSubjectComponent, outlet: 'menu'  },
+   { path: 'details-student/:id', component: DetailsSudentComponent, outlet: 'menu' },
+   { path: 'edit-inscriptions/:id', component: FormEditInscriptionsComponent, outlet: 'menu'  },*/
 ];
 @NgModule({
   declarations: [],

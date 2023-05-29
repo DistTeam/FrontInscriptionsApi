@@ -28,7 +28,7 @@ export class LogingComponent implements HttpInterceptor{
     public cookieService: CookieService,
     public router: Router
   ) {
-    // this.getRedis();
+    //this.getRedis();
     if (this.array !== null){
       this.user = this.array[0];
       this.pasword = this.array[1];
@@ -68,6 +68,10 @@ export class LogingComponent implements HttpInterceptor{
       this.toastr.error(err);
       console.log(err);
     });
+  }
+
+  deleteToken(){
+    this.cookieService.delete('token');
   }
 
 
