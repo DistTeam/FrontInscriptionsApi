@@ -32,6 +32,7 @@ import {RegisterComponent} from "./register/register.component";
 import {Menu} from "@angular/cdk/menu";
 import {MenuComponent} from "./menu/menu.component";
 import {RouterModule} from "@angular/router";
+import {GuardGuard} from "./loging/guard.guard";
 
 
 @NgModule({
@@ -68,7 +69,7 @@ import {RouterModule} from "@angular/router";
     ToastrModule.forRoot(),
     BrowserAnimationsModule
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: LogingComponent, multi: true }],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: LogingComponent, multi: true }, GuardGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {

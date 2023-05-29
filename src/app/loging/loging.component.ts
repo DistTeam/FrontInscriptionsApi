@@ -10,6 +10,7 @@ import {CookieService} from "ngx-cookie-service";
 import {RouterModule} from "@angular/router";
 import {AppRoutingModule} from "../app-routing.module";
 import { DataService } from '../shared/data.service';
+import {CharService} from "./char.service";
 
 @Component({
   selector: 'app-loging',
@@ -30,7 +31,8 @@ export class LogingComponent implements HttpInterceptor{
     public service: AppService,
     private route: ActivatedRoute,
     public cookieService: CookieService,
-    public router: Router
+    public router: Router,
+    private sharedService:CharService
   ) {
     //this.getRedis();
     if (this.array !== null){
@@ -69,6 +71,8 @@ export class LogingComponent implements HttpInterceptor{
       const token = JSON.parse(tokenString);
       console.log("token", token.token);
       this.cookieService.set('token', token.token);
+      this.sharedService.myVariable=true;
+
       //this.loggedIn=true;
       this.router.navigate(['/','home']);
 

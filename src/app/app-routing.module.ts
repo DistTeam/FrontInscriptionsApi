@@ -13,12 +13,13 @@ import {HomeComponent} from './home/home.component';
 import {DetailsSudentComponent} from "./Students/details-sudent/details-sudent.component";
 import {LogingComponent} from "./loging/loging.component";
 import {MenuComponent} from "./menu/menu.component";
+import {GuardGuard} from "./loging/guard.guard";
 
 
 const routes: Routes = [
   {path: "", component: LogingComponent},
   {
-    path: 'home', component: MenuComponent, children: [
+    path: 'home', component: MenuComponent, canActivate:[GuardGuard],children: [
       {path: '', component: HomeComponent},
       {path: 'welcome', component: HomeComponent},
       {path: 'create-student', component: FormStudentComponent},
