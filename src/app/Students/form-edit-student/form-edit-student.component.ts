@@ -119,5 +119,6 @@ export class FormEditStudentComponent {
     form.form.reset();
     this.service.formDataStudent = new StudentModel();
     this.imageUrl = null;
+    window.history.back();
   }
 }

@@ -1,5 +1,5 @@
 <!--suppress XmlDuplicatedId -->
-<form novalidate autocomplete="off" #form="ngForm"  (submit)="editStudent(form)">
+<form novalidate autocomplete="off" #form="ngForm" >
   <input type="hidden" name="jeje" [value]="studentId"/>
   <body>
   <div id="title" class="card bg-outline-primary mx-5">
@@ -108,12 +108,12 @@
         </div>
       </div>
       <div>
-        <button class="mat-button" (click)="resetForm(form)" routerLink="/view-student" type="goBack" style="float: left;" ali
+        <button class="mat-button" (click)="resetForm(form)" type="goBack" style="float: left;" ali
                 class="btn btn-primary mx-3">Volver
         </button>
       </div>
       <div>
-        <button class="mat-button" [disabled]="form.invalid" type="submit" value="submit" style="float: right;" ali
+        <button class="mat-button" [disabled]="form.invalid"  (click)="editStudent(form)"style="float: right;" ali
                 class="btn btn-primary mx-3">Editar Estudiante
         </button>
       </div>

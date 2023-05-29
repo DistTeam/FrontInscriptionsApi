@@ -64,5 +64,6 @@ export class FormEditInscriptionsComponent {
     this.service.formDataStudent = new StudentModel();
     this.service.formDataInscriptionPost = new InscriptionForPost();
     this.service.formDataInscription = new InscriptionsModel();
+    window.history.back();
   }
 }

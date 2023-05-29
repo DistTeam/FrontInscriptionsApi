@@ -47,7 +47,7 @@ export class AppService {
   getLoging() {
     const key = `${this.formDataUser.user}`;
     const value = `${this.formDataUser.pasword}`;
-    return this.http.get(`${this.APIUrl}/Users/ObtenerToken/${value}?name=${key}`);
+    return this.http.get(`${this.APIUrl}/Users/ObtenerToken/${key},${value}`);
   }
 
   uploadImg(imageFile: File) {

@@ -25,7 +25,7 @@
     </button>
     <mat-divider></mat-divider>
 
-    <button mat-button class="menu-button" routerLink="home-component">
+    <button mat-button class="menu-button" [routerLink]="['/', { outlets: { principal: null, menu: null } }]">
       <mat-icon>home</mat-icon>
       <span>Inicio</span>
     </button>
@@ -36,7 +36,7 @@
     </button>
 
     <mat-menu #homeMenu="matMenu">
-      <button mat-menu-item routerLink="/create-student">Agregar estudiantes</button>
+      <button mat-menu-item routerLink="create-student">Agregar estudiantes</button>
       <button mat-menu-item routerLink="view-student">Ver Estudiantes</button>
     </mat-menu>
 
@@ -46,8 +46,8 @@
     </button>
 
     <mat-menu #profileMenu="matMenu">
-      <button mat-menu-item routerLink="/create-subject">Agregar Materias</button>
-      <button mat-menu-item routerLink="/view-subject">Ver Materias</button>
+      <button mat-menu-item routerLink="create-subject">Agregar Materias</button>
+      <button mat-menu-item routerLink="view-subject">Ver Materias</button>
     </mat-menu>
 
     <button class="menu-button" mat-button [matMenuTriggerFor]="aboutMenu">
@@ -58,8 +58,8 @@
 
 
     <mat-menu #aboutMenu="matMenu">
-      <button mat-menu-item routerLink="/create-inscription">Inscribir materias</button>
-      <button mat-menu-item routerLink="/view-inscription">Ver Inscripciones</button>
+      <button mat-menu-item routerLink="create-inscription">Inscribir materias</button>
+      <button mat-menu-item routerLink="view-inscription">Ver Inscripciones</button>
     </mat-menu>
     <mat-divider></mat-divider>
   </mat-sidenav>

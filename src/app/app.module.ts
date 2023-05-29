@@ -10,7 +10,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatMenuModule} from '@angular/material/menu';
 import {AppRoutingModule} from "./app-routing.module";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {NgxPaginationModule} from "ngx-pagination";
 import {FormsModule} from "@angular/forms";
 import {StudentComponent} from "./Students/student.component";
@@ -31,6 +31,7 @@ import {LogingComponent} from "./loging/loging.component";
 import {RegisterComponent} from "./register/register.component";
 import {Menu} from "@angular/cdk/menu";
 import {MenuComponent} from "./menu/menu.component";
+import {RouterModule} from "@angular/router";
 
 
 @NgModule({
@@ -61,14 +62,13 @@ import {MenuComponent} from "./menu/menu.component";
     MatMenuModule,
     MatDividerModule,
     AppRoutingModule,
-    BrowserModule,
     HttpClientModule,
     NgxPaginationModule,
     FormsModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: LogingComponent, multi: true }],
   bootstrap: [AppComponent],
 })
 export class AppModule {
