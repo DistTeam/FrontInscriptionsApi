@@ -11,7 +11,7 @@ import {UserModel} from "./loging/UserModel";
   providedIn: 'root'
 })
 export class AppService {
-  readonly APIUrl = "https://localhost:7243/api";
+  readonly APIUrl = "https://uptcinscriptionsapi.azurewebsites.net/api";
 
   constructor(private http: HttpClient) {
   }
