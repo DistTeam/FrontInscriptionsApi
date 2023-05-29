@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ShowSubjectsService {
 
-  private baseUrl: string | null = 'https://localhost:7243/api/Subjects';
+  private baseUrl: string | null = 'https://uptcsubjectsapi.azurewebsites.net/api/Subjects';
 
   constructor(private http: HttpClient) { }
 

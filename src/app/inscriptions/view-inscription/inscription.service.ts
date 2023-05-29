@@ -6,7 +6,7 @@ import {Observable} from "rxjs";
   providedIn: 'root'
 })
 export class InscriptionService {
-  private baseUrlInscriptionsGetAll: string | null = 'https://localhost:7243/api/Inscriptions';
+  private baseUrlInscriptionsGetAll: string | null = 'https://uptcinscriptionsapi.azurewebsites.net/api/Inscriptions';
 
   constructor(private http: HttpClient) {
   }

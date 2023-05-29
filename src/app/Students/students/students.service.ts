@@ -7,7 +7,7 @@ import {Observable } from 'rxjs';
 })
 export class StudentsService {
 
-  private baseUrl: string | null = 'https://localhost:7243/api/Students';
+  private baseUrl: string | null = 'https://uptcstudentsapi.azurewebsites.net/api/Students';
 
   constructor(private http: HttpClient) { }
 
