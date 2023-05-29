@@ -28,7 +28,8 @@ export class FormEditInscriptionsComponent {
     });
     this.inspectionList$ = this.service.getInspectionList();
     this.inspectionList$.subscribe((inspectionList) => {
-      this.inspectionList = inspectionList;
+      const inspection = JSON.parse(JSON.stringify(inspectionList));
+      this.inspectionList = inspection.$values;
     });
   }
   getInscription(id: number): void {

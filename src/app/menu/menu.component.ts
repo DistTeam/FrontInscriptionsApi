@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {LogingComponent} from "../loging/loging.component";
+import { DataService } from '../shared/data.service';
 
 @Component({
   selector: 'app-menu',
@@ -7,12 +8,17 @@ import {LogingComponent} from "../loging/loging.component";
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent {
+  inputValue: string = '';
   public closeLogin: LogingComponent;
 
-  constructor() {
+  constructor(private dataService: DataService) {
   }
 
   closeLoginM(){
     this.closeLogin.deleteToken();
+  }
+
+  ngOnInit() {
+    this.inputValue = this.dataService.getInputValue();
   }
 }

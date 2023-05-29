@@ -17,19 +17,19 @@
       src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
     />
 
-    <h4 class="name">Nombre Usuario</h4>
+    <h4 class="name">{{ inputValue }}</h4>
     <p class="designation">Usuario</p>
-    <button class="menu-button" routerLink="/login"       (click)="closeLoginM()">
+    <button  mat-button class="menu-button" routerLink="/login"       (click)="closeLoginM()">
 
       <mat-icon>exit_to_app</mat-icon>
       <span>Cerrar Sesión</span>
     </button>
     <mat-divider></mat-divider>
 
-    <button mat-button class="menu-button" [routerLink]="['/', { outlets: { principal: null, menu: null } }]">
+<!--    <button mat-button class="menu-button" routerLink="welcome">
       <mat-icon>home</mat-icon>
       <span>Inicio</span>
-    </button>
+    </button>-->
 
     <button mat-button class="menu-button" [matMenuTriggerFor]="homeMenu">
       <mat-icon>face</mat-icon>
@@ -62,6 +62,8 @@
       <button mat-menu-item routerLink="create-inscription">Inscribir materias</button>
       <button mat-menu-item routerLink="view-inscription">Ver Inscripciones</button>
     </mat-menu>
+
+
     <mat-divider></mat-divider>
   </mat-sidenav>
 

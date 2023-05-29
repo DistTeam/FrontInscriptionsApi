@@ -34,6 +34,7 @@ const routes: Routes = [
   { path: 'edit-subject/:id', component: FormEditSubjectComponent},
   { path: 'details-student/:id', component: DetailsSudentComponent},
   { path: 'login', component: LogingComponent},
+  {path: 'welcome', component: HomeComponent}
   //{ path: 'home', component: MenuComponent, outlet: 'principal' },
   //{ path: 'create-student', component: FormStudentComponent, outlet: 'menu' },
   /*{ path: 'edit-student/:id', component: FormEditStudentComponent, outlet: 'menu'  },

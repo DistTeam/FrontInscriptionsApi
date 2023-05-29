@@ -9,6 +9,7 @@ import {Observable} from "rxjs";
 import {CookieService} from "ngx-cookie-service";
 import {RouterModule} from "@angular/router";
 import {AppRoutingModule} from "../app-routing.module";
+import { DataService } from '../shared/data.service';
 
 @Component({
   selector: 'app-loging',
@@ -16,12 +17,15 @@ import {AppRoutingModule} from "../app-routing.module";
   styleUrls: ['./loging.component.css']
 })
 export class LogingComponent implements HttpInterceptor{
+
+  inputValue: string = '';
   public user: any;
   public pasword: any;
   public array: any[] = [];
   public remember: any = false;
   loggedIn: boolean = true;
   constructor(
+    public dataService: DataService,
     private toastr: ToastrService,
     public service: AppService,
     private route: ActivatedRoute,
@@ -35,38 +39,42 @@ export class LogingComponent implements HttpInterceptor{
     }
 
   }
-
-  putUser() {
+  updateInputValue() {
+    this.dataService.setInputValue(this.inputValue);
+  }
+  putUser(form: NgForm) {
     if (this.remember){
       this.service.putUsers().subscribe(
         res => {
           this.toastr.success("exitoso");
           this.getLogin();
+          this.resetForm(form);
         },
         err => {
-          this.toastr.error(err);
-          console.log(err);
+          this.resetForm(form);
+          this.toastr.error("error");
         }
       );
     }
     else {
       this.getLogin();
+      this.resetForm(form);
     }
   }
 
   getLogin() {
     this.service.getLoging().subscribe(res => {
-      this.toastr.success(res.toString());
+      this.toastr.success("INICIO DE SESION EXITOSO!");
       const tokenString = JSON.stringify(res);
       const token = JSON.parse(tokenString);
       console.log("token", token.token);
       this.cookieService.set('token', token.token);
       //this.loggedIn=true;
       this.router.navigate(['/','home']);
+
       //this.router.navigateByUrl("home");
     }, err => {
-      this.toastr.error(err);
-      console.log(err);
+      this.toastr.error("ERROR AL INICIAR SESION");
     });
   }
 
