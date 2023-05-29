@@ -14,13 +14,12 @@ import {DomSanitizer} from "@angular/platform-browser";
 export class FormEditStudentComponent {
   public studentId: number;
   public student: StudentModel;
+  imageUrl: string | null = null;
+  imageFile: File | null = null;
 
   constructor(public service: AppService, private toastr: ToastrService, public sanitizer: DomSanitizer, private route: ActivatedRoute) {
     this.sanitizer = sanitizer;
   }
-
-  imageUrl: string | null = null;
-  imageFile: File | null = null;
 
   handleDragOver(event: DragEvent) {
     event.preventDefault();
@@ -77,15 +76,13 @@ export class FormEditStudentComponent {
 
   editStudent(form: NgForm) {
     if (!this.imageUrl?.includes("https://almacenamientoproyectos.blob.core.windows.net")) {
-      if (this.imageUrl != null && this.imageFile != null) {
+      if (this.imageUrl != null && this.imageFile != null && this.imageUrl?.includes("blob:http")) {
         this.service.formDataStudent.studentPhoto = this.imageUrl;
-        console.log(this.service.formDataStudent);
         this.service.uploadImg(this.imageFile).subscribe(
           (res: any) => { // actualización del tipo de dato de la respuesta
             this.toastr.success('Imagen subida con exito', 'Inscripciones UPTC');
             const imageUrl = res.blobUrl;
             this.service.formDataStudent.studentPhoto = imageUrl.toString();
-            console.log(this.service.formDataStudent);
             this.service.putStudent().subscribe(
               (res: any) => {
                 this.toastr.success('Estudiante actualizado con exito', 'Inscripciones UPTC');
@@ -100,18 +97,11 @@ export class FormEditStudentComponent {
             this.toastr.error(err.toString());
           }
         );
+      } else {
+        this.editWithoutPhoto(form);
       }
     } else {
-      if (!this.imageUrl?.includes("https://almacenamientoproyectos.blob.core.windows.net")) this.service.formDataStudent.studentPhoto = "NULL";
-      this.service.putStudent().subscribe(
-        (res: any) => {
-          this.toastr.success('Estudiante actualizado con exito', 'Inscripciones UPTC');
-          this.resetForm(form);
-        },
-        (err: any) => {
-          this.toastr.error(err);
-        }
-      );
+      this.editWithoutPhoto(form);
     }
   }
 
@@ -119,6 +109,24 @@ export class FormEditStudentComponent {
     form.form.reset();
     this.service.formDataStudent = new StudentModel();
     this.imageUrl = null;
+  }
+
+  goBack(form: NgForm) {
+    this.resetForm(form);
     window.history.back();
+  }
+
+  private editWithoutPhoto(form: NgForm) {
+    this.service.putStudent().subscribe(
+      (res: any) => {
+        console.log("ENTRE:", this.service.formDataStudent);
+        this.toastr.success('Estudiante actualizado con exito', 'Inscripciones UPTC');
+        this.resetForm(form);
+        window.history.back();
+      },
+      (err: any) => {
+        this.toastr.error(err);
+      }
+    );
   }
 }

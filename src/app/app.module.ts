@@ -21,7 +21,7 @@ import {SubjectComponent} from "./subject/subject.component";
 import { InscriptionsComponent } from './inscriptions/inscriptions.component';
 import { CreateInscriptionsComponent } from './inscriptions/form-create-inscriptions/create-inscriptions.component';
 import { ViewInscriptionComponent } from './inscriptions/view-inscription/view-inscription.component';
-import {ShowInspectionComponent} from "./subject/show-inspection/show-inspection.component";
+import {ShowSubjectsComponent} from "./subject/show-subjects/show-subjects.component";
 import {FormStudentComponent} from "./Students/form-create-student/form-student.component";
 import {FormEditInscriptionsComponent} from "./inscriptions/form-edit-inscriptions/form-edit-inscriptions.component";
 import {ToastrModule} from "ngx-toastr";
@@ -45,7 +45,7 @@ import {RouterModule} from "@angular/router";
     CreateInscriptionsComponent,
     FormEditInscriptionsComponent,
     ViewInscriptionComponent,
-    ShowInspectionComponent,
+    ShowSubjectsComponent,
     FormStudentComponent,
     StudentsComponent,
     DetailsSudentComponent,

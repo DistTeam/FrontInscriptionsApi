@@ -6,14 +6,14 @@ import { FileSaverService } from 'ngx-filesaver';
 import {SubjectModel} from "../subject.model";
 import {FormEditSubjectComponent} from "../form-edit-subject/form-edit-subject.component";
 import {Router, Routes} from "@angular/router";
-import {ShowInspectionService} from "./show-inspection.service";
+import {ShowSubjectsService} from "./show-subjects.service";
 
 @Component({
-  selector: 'app-show-inspection',
-  templateUrl: './show-inspection.component.html',
-  styleUrls: ['./show-inspection.component.css']
+  selector: 'app-show-subjects',
+  templateUrl: './show-subjects.component.html',
+  styleUrls: ['./show-subjects.component.css']
 })
-export class ShowInspectionComponent implements OnInit{
+export class ShowSubjectsComponent implements OnInit{
 
   public nombre = "Jorge Martinez ";
   public array: any[] = [];
@@ -24,7 +24,7 @@ export class ShowInspectionComponent implements OnInit{
   currentSortOrder: string = "asc";
   curreentSortBy: string = "id";
   tamanio: number = 0;
-  constructor(private service:AppService,private showSubjectService:ShowInspectionService, private fileSaverService: FileSaverService,private router: Router) {
+  constructor(private service:AppService, private showSubjectService:ShowSubjectsService, private fileSaverService: FileSaverService, private router: Router) {
   }
   populateForm(selectedRecord:SubjectModel) {
    this.service.formDataSubject = Object.assign({},selectedRecord);

@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ShowInspectionService {
+export class ShowSubjectsService {
 
   private baseUrl: string | null = 'https://localhost:7243/api/Subjects';
 
