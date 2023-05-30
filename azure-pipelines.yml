@@ -61,11 +61,12 @@ stages:
           - task: AzureWebApp@1
             displayName: 'Deploy App Service'
             inputs:
-              azureSubscription: 'Azure for Students (ff90a76b-91c3-4aea-b3ce-2b5a4a7e84b1)'
+              azureSubscription: 'Azure for Students(1c54dd14-e801-45ed-9afc-d9b64465e6a6)'
               appType: 'webAppLinux'
-              appName: 'inscriptionsUptc'
+              appName: 'UptcInscriptionsFront'
               package: '$(Pipeline.Workspace)/drop/$(Build.BuildId).zip'
               runtimeStack: 'NODE|16-lts'
+              startUpCommand: 'pm2 start /home/site/wwwroot/dist/side-bar -no-daemon-spa'
 
 - stage: Acceptance
   dependsOn: [ Development ]
