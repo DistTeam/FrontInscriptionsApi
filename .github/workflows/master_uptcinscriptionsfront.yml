@@ -30,18 +30,19 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Parallel tasks
-        run: |
-          npm run build --prod --if-present &  # Ejecutar npm run build en segundo plano
-          # Tarea adicional en paralelo con npm run build
-          # Ejemplo: npm run lint
+      - name: Build
+        run: npm run build --prod --if-present
 
-          wait  # Esperar a que finalice la ejecución de npm run build
+      - name: Zip files
+        uses: actions/zip@v0.2.0
+        with:
+          args: 'a deployment.zip .'
 
-      - name: Deploy to Azure Web App
+      - name: 'Deploy to Azure Web App'
+        id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'frontInscriptions'
+          app-name: 'UptcInscriptionsFront'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_5F9D259FEFD1463088B5CEEB0BC3F3E0 }}
-          package: .
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F43A3578A8964629A5D623C027F16C0F }}
+          package: deployment.zip
