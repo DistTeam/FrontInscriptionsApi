@@ -32,7 +32,7 @@ jobs:
 
       - name: Build and test
         run: |
-          npm run build --prod --aot=false --build-optimizer=true
+          npm run build --prod --build-optimizer=true
           
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
