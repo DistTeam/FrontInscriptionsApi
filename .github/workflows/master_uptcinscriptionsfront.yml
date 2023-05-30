@@ -26,18 +26,22 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
+
       - name: Install dependencies
         run: npm ci
 
-      - name: Build and test
+      - name: Parallel tasks
         run: |
-          npm run build --prod --aot=false --build-optimizer=true
-          
-      - name: 'Deploy to Azure Web App'
-        id: deploy-to-webapp
+          npm run build --prod --if-present &  # Ejecutar npm run build en segundo plano
+          # Tarea adicional en paralelo con npm run build
+          # Ejemplo: npm run lint
+
+          wait  # Esperar a que finalice la ejecución de npm run build
+
+      - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'UptcInscriptionsFront'
+          app-name: 'frontInscriptions'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F43A3578A8964629A5D623C027F16C0F }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_5F9D259FEFD1463088B5CEEB0BC3F3E0 }}
           package: .
