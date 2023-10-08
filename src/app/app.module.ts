@@ -33,6 +33,7 @@ import {Menu} from "@angular/cdk/menu";
 import {MenuComponent} from "./menu/menu.component";
 import {RouterModule} from "@angular/router";
 import {GuardGuard} from "./loging/guard.guard";
+import { DetailsHistoriesComponent } from './details-histories/details-histories.component';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import {GuardGuard} from "./loging/guard.guard";
     DetailsSudentComponent,
     RegisterComponent,
     LogingComponent,
-    MenuComponent
+    MenuComponent,
+    DetailsHistoriesComponent
   ],
   imports: [
     BrowserModule,
